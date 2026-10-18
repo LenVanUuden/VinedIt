@@ -160,6 +160,7 @@ const DRAW_SYSTEM = `You redraw wine labels for a Dutch wine-collecting app. The
 
 Step 1 – key: list the 2 to 5 most recognisable elements of this label (e.g. "tall narrow black name", "red striped sun lower centre", "gold coat of arms under the year", "mountain range along the top edge").
 Step 2 – draw the label on an empty label of 300 wide × 400 high (y = 0 at the top). Place every element where it really is, with its real size, colour and capitals. Leave out small print; show a block of small text as "lines".
+Logos: if the label carries the logo of a sports club or another non-wine company, do not copy that logo; draw a simple neutral emblem in the same place, size and colours instead (for example a plain laurel wreath around a circle). Coats of arms and crests of wine estates may be drawn as usual.
 
 Elements (els), in drawing order:
 - {"t":"text","s":"…","y":baseline,"size":font size,"font":"condensed|classic|didone|script|gothic|modern|display","weight":400-900,"color":"#hex" or "metal","ls":letter spacing,"italic":bool,"upper":bool,"w":optional exact width,"x":optional,"align":"center|left|right"}. Copy text EXACTLY as printed (same words, language, accents). Use "{year}" for the vintage.

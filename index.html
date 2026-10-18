@@ -1310,20 +1310,20 @@ body.onlysamen .slot:not(:has(.mini.samen)) .sleeve>*{opacity:.18;filter:graysca
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
-<script>window.VI_V='20261017-211707'</script>
-<script src="data.js?v=20261017-211707"></script>
-<script src="art.js?v=20261017-211707"></script>
-<script src="gids.js?v=20261017-211707"></script>
-<script src="maps.js?v=20261017-211707"></script>
-<script src="zegels.js?v=20261017-211707"></script>
-<script src="landen.js?v=20261017-211707"></script>
-<script src="etiket.js?v=20261017-211707"></script>
-<script src="legendes.js?v=20261017-211707"></script>
-<script src="fullart.js?v=20261017-211707"></script>
-<script src="stickers.js?v=20261017-211707"></script>
-<script src="kistjes.js?v=20261017-211707"></script>
-<script src="vrienden.js?v=20261017-211707"></script>
-<script src="wereldbol.js?v=20261017-211707"></script>
+<script>window.VI_V='20261018-174928'</script>
+<script src="data.js?v=20261018-174928"></script>
+<script src="art.js?v=20261018-174928"></script>
+<script src="gids.js?v=20261018-174928"></script>
+<script src="maps.js?v=20261018-174928"></script>
+<script src="zegels.js?v=20261018-174928"></script>
+<script src="landen.js?v=20261018-174928"></script>
+<script src="etiket.js?v=20261018-174928"></script>
+<script src="legendes.js?v=20261018-174928"></script>
+<script src="fullart.js?v=20261018-174928"></script>
+<script src="stickers.js?v=20261018-174928"></script>
+<script src="kistjes.js?v=20261018-174928"></script>
+<script src="vrienden.js?v=20261018-174928"></script>
+<script src="wereldbol.js?v=20261018-174928"></script>
 <script>
 const SB_URL='https://fneiobwtubeehjqnzeta.supabase.co';
 const SB_KEY='sb_publishable_vpOCr1D2DfYbpBEcAhdvSg_f1dcs5OA'; // publieke sleutel, bedoeld voor de browser
@@ -2956,6 +2956,7 @@ function openAdminWine(w){
   adminPhoto(w).then(u=>{const ph=o.querySelector('.awph');if(!ph)return;
     if(!u){ph.innerHTML='<span>Geen foto bewaard</span>';return}
     ph.innerHTML=`<img src="${u}" alt="Foto van het etiket">`;
+    if(w._fotoRef){const fc=o.querySelector('.awfoto figcaption');if(fc)fc.textContent='Referentiefoto'}
     if(w._fotoArt){const fc=o.querySelector('.awfoto figcaption');if(fc)fc.textContent='Bewerkte foto';ph.insertAdjacentHTML('afterend','<p class="awnote">Origineel niet bewaard: deze scan is van vóór 15 oktober, toen alleen de bewerkte kaartfoto werd opgeslagen. Scan de fles opnieuw voor een echte foto; tekenen gaat dan veel beter.</p>')}ph.onclick=()=>overlay(`<img class="awbig" src="${u}" alt="Foto van het etiket">`,{nest:true})});
   const lk=o.querySelector('#awlock');if(lk)lk.onclick=async()=>{lk.disabled=true;try{await callDraw({mode:'lock',wine:w.id,locked:!w.locked});w.locked=!w.locked;await loadAlbum();go(cur,true);popOverlay();setTimeout(()=>openAdminWine(w),250)}catch(e){lk.disabled=false;toast('Lukte niet.')}};
   o.querySelector('#awmerge').onclick=()=>openAdminWines('',{id:w.id,done:other=>askConfirm('Samenvoegen?',`"${other.naam}" (${other.kaarten}×) gaat op in "${w.naam}". Kaarten en een getekend etiket gaan mee. Dit kan niet ongedaan worden.`,'Samenvoegen',async()=>{
@@ -2965,7 +2966,7 @@ function openAdminWine(w){
 /* Nieuwste etiketfoto (tijdelijke link); per wijn even onthouden */
 async function adminPhoto(w){
   if(w._foto!==undefined)return w._foto;
-  try{const d=await callDraw({mode:'photo',wine:w.id});w._foto=d&&d.url||null;w._fotoArt=d&&d.kind==='art'}catch(e){w._foto=null}
+  try{const d=await callDraw({mode:'photo',wine:w.id});w._foto=d&&d.url||null;w._fotoArt=d&&d.kind==='art';w._fotoRef=d&&d.kind==='ref'}catch(e){w._foto=null}
   return w._foto;
 }
 async function adminRedraw(w,m){
@@ -2976,7 +2977,7 @@ async function adminRedraw(w,m){
   if(!st){toast('Geen tekening'+(d&&d.errors&&d.errors[m]?': '+d.errors[m].slice(0,90):'')+'.');return}
   const c=awCard(w);
   const o=overlay(`<p class="status">Nieuw etiket van ${lab}</p><p class="hint">${d.foto?'Getekend vanaf de foto.':'Geen foto gevonden: getekend uit kennis.'}</p>
-    <div class="cmp three">${w._foto?`<div class="cmpcol"><b>${w._fotoArt?'Bewerkte foto':'Foto'}</b><div class="cmplbl cmpfoto"><img src="${w._foto}" alt=""></div></div>`:''}<div class="cmpcol"><b>Huidig</b>${w.label_style?`<div class="cmplbl">${makeLabelSVG(w.label_style,c)}</div>`:'<p class="hint">Nog geen etiket</p>'}</div>
+    <div class="cmp three">${w._foto?`<div class="cmpcol"><b>${w._fotoArt?'Bewerkte foto':w._fotoRef?'Referentiefoto':'Foto'}</b><div class="cmplbl cmpfoto"><img src="${w._foto}" alt=""></div></div>`:''}<div class="cmpcol"><b>Huidig</b>${w.label_style?`<div class="cmplbl">${makeLabelSVG(w.label_style,c)}</div>`:'<p class="hint">Nog geen etiket</p>'}</div>
     <div class="cmpcol"><b>${lab}</b><div class="cmplbl">${makeLabelSVG(st,c)}</div>${(st.key||[]).length?`<ul>${st.key.map(k=>`<li>${esc(k)}</li>`).join('')}</ul>`:''}</div></div>
     <div class="actions"><button class="btn" id="rdno">Huidige houden</button><button class="btn primary" id="rdyes">Nieuwe gebruiken</button></div>`,{nest:true});
   o.querySelector('#rdno').onclick=()=>popOverlay();

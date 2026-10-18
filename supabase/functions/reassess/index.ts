@@ -101,6 +101,7 @@ const DRAW_SYSTEM = `You redraw wine labels for a Dutch wine-collecting app. The
 
 Step 1 – key: list the 2 to 5 most recognisable elements of this label (e.g. "tall narrow black name", "red striped sun lower centre", "gold coat of arms under the year", "mountain range along the top edge").
 Step 2 – draw the label on an empty label of 300 wide × 400 high (y = 0 at the top). Place every element where it really is, with its real size, colour and capitals. Leave out small print; show a block of small text as "lines".
+Logos: if the label carries the logo of a sports club or another non-wine company, do not copy that logo; draw a simple neutral emblem in the same place, size and colours instead (for example a plain laurel wreath around a circle). Coats of arms and crests of wine estates may be drawn as usual.
 
 Elements (els), in drawing order:
 - {"t":"text","s":"…","y":baseline,"size":font size,"font":"condensed|classic|didone|script|gothic|modern|display","weight":400-900,"color":"#hex" or "metal","ls":letter spacing,"italic":bool,"upper":bool,"w":optional exact width,"x":optional,"align":"center|left|right"}. Copy text EXACTLY as printed (same words, language, accents). Use "{year}" for the vintage.
@@ -191,6 +192,11 @@ async function movePhotos(admin: any) {
 
 // De nieuwste etiketfoto van deze wijn, van wie hem ook heeft
 // deno-lint-ignore no-explicit-any
+// Referentiefoto die de beheerder aanlevert (bijv. een betere foto van internet): refs/<wijn-id>.jpg in de repo gaat voor
+const REF_BASE = "https://raw.githubusercontent.com/LenVanUuden/VinedIt/main/refs/";
+async function refPhoto(wid: string): Promise<string | null> {
+  try { const r = await fetch(REF_BASE + wid + ".jpg"); if (!r.ok) return null; return b64(await r.arrayBuffer()); } catch (_) { return null; }
+}
 // Scans van vóór 15 okt bewaarden alleen de bewerkte kaartfoto (.jpg, kleuren vereenvoudigd), niet het origineel
 const POSTER_NOTE = "\nLet op: de foto is een bewerkte versie met vereenvoudigde, vervormde kleuren (posterisatie). Gebruik hem voor opbouw, vormen en tekst, niet voor de exacte kleuren; kies kleuren die bij dit soort etiket passen.";
 const isPoster = (p: string | null) => !!p && !p.endsWith(".label.jpg");
@@ -260,6 +266,7 @@ Deno.serve(async (req) => {
     // Beheer: de nieuwste etiketfoto van een wijn bekijken (tijdelijke link, 10 minuten)
     if (body.mode === "photo") {
       try { await movePhotos(admin); } catch (e) { console.warn("movePhotos", e); }
+      try { const rr = await fetch(REF_BASE + body.wine + ".jpg", { method: "HEAD" }); if (rr.ok) return json({ status: "ok", url: REF_BASE + body.wine + ".jpg", kind: "ref" }); } catch (_) { /* geen referentiefoto */ }
       const path = await newestPhotoPath(admin, body.wine);
       if (!path) return json({ status: "ok", url: null });
       const { data: su } = await admin.storage.from("card-art").createSignedUrl(path, 600);
@@ -286,7 +293,9 @@ Deno.serve(async (req) => {
       // Alleen tekenen als er nog geen getekend etiket is (bijv. na promotie naar Rare); nooit een bestaand of vastgezet etiket overschrijven
       if (body.only_missing && (w.label_style as Record<string, unknown> | null)?.v === 2) return json({ status: "ok", skipped: true });
       try { await movePhotos(admin); } catch (e) { console.warn("movePhotos", e); }
-      const img = await newestPhoto(admin, w.id);
+      const ref = await refPhoto(w.id);
+      const img = ref ?? await newestPhoto(admin, w.id);
+      if (ref) LAST_PHOTO_PATH = "ref.label.jpg";
       const desc = `Wijn: ${w.naam}\nMaker: ${w.maker || "onbekend"}\nJaargang: ${w.jaar ?? "geen"}\nHerkomst: ${w.appellation || ""} (${w.regio}, ${w.land || ""})\nStijl: ${w.stijl || ""}`;
       const descP = desc + (img && isPoster(LAST_PHOTO_PATH) ? POSTER_NOTE : "");
       const models: string[] = Array.isArray(body.models) ? body.models : [body.model ?? "sonnet"];
