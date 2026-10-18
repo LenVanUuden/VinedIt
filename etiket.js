@@ -194,8 +194,10 @@ function makeLabelFree(st,c){
       let s=String(e.s||'').slice(0,48);if(s==='{year}')s=String(c&&c.jaar||'');if(e.upper)s=s.toUpperCase();
       const w=num(e.w,0,0,280),x=num(e.x,150,0,300),anchor=e.align==='left'?'start':e.align==='right'?'end':'middle';
       const fit=w?`textLength="${w}" lengthAdjust="spacingAndGlyphs"`:'';
-      const sc=e.font==='condensed'?` transform="scale(1 1.18)" transform-origin="${x} ${y}"`:'';
-      return `<text x="${x}" y="${y}" text-anchor="${anchor}" font-family="${F.f}" font-weight="${e.weight||F.w}" font-size="${size}" letter-spacing="${num(e.ls,0,-2,12)}" fill="${col(e.color)}" ${e.italic?'font-style="italic"':''} ${fit}${sc}>${esc(s)}</text>`;
+      const rot=num(e.rot,0,-90,90);
+      const sc=rot?` transform="rotate(${rot} ${x} ${y})${e.font==='condensed'?` translate(${x} ${y}) scale(1 1.18) translate(${-x} ${-y})`:''}"`:(e.font==='condensed'?` transform="scale(1 1.18)" transform-origin="${x} ${y}"`:'');
+      const op=e.op!=null?` opacity="${num(e.op,1,.1,1)}"`:'';
+      return `<text x="${x}" y="${y}" text-anchor="${anchor}" font-family="${F.f}" font-weight="${e.weight||F.w}" font-size="${size}" letter-spacing="${num(e.ls,0,-2,12)}" fill="${col(e.color)}" ${e.italic?'font-style="italic"':''} ${fit}${sc}${op}>${esc(s)}</text>`;
     }
     if(e.t==='art'){
       const x=num(e.x,100,0,300),y=num(e.y,100,0,400),w=num(e.w,100,4,300),h=num(e.h,100,4,400);
