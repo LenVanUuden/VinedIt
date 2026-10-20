@@ -213,7 +213,7 @@ function posterSVG(A, v, label) {
     `<rect width="200" height="140" fill="url(#${id})"/>` +
     `<rect x="3.5" y="3.5" width="193" height="113" fill="none" stroke="${c.m}" stroke-width=".8" opacity=".55"/>` +
     `<rect y="120" width="200" height="20" fill="${c.dark}"/><rect y="120" width="200" height="1.2" fill="${c.sun}"/>` +
-    `<text x="100" y="133.8" text-anchor="middle" font-family="Limelight, Georgia, serif" font-size="${f1(fs)}" letter-spacing="${ls}" fill="${c.sky}">${name.replace(/[<>&"]/g, '')}</text></svg>`;
+    `<text x="100" y="133.8" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-weight="700" font-size="${f1(fs)}" letter-spacing="${ls}" fill="${c.sky}">${name.replace(/[<>&"]/g, '')}</text></svg>`;
 }
 function posterTallLayers(A, v) {
   const L = posterLayers(A, v % 4, 280), id = 'ht' + (++ARTID);

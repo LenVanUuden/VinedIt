@@ -67,11 +67,11 @@ const ZE={
   'starter':[ZW.goud,`<g>${[-18,-9,0,9,18].map((x,i)=>`<circle cx="${x}" cy="${Math.abs(x)/3-4}" r="5.5"/>`).join('')}</g>`+L('M-22 12h44',2)+P('M0-26l2 5 5 .4-4 3 1.4 5L0-15l-4.4 2.6 1.4-5-4-3 5-.4z')],
   'wereldreiziger':[ZW.blauw,`<circle r="20" fill="none" stroke-width="2"/>`+P('M0-26l5 26-5 26-5-26z')+P('M-26 0l26-5 26 5-26 5z','opacity=".7"')+C(0,0,3)],
   'wereldreiziger-2':[ZW.teal,P('M0-26c12 0 20 8 20 18 0 8-8 14-12 18h-16C-12 6-20 0-20-8c0-10 8-18 20-18z M-6 14h12v8h-12z')+L('M-8 10l2 4M8 10l-2 4M0-26c-6 6-6 30 0 36M0-26c6 6 6 30 0 36',1.4)],
-  'chardonnay':[ZW.oker,`<text x="0" y="9" text-anchor="middle" font-family="Limelight,Georgia,serif" font-size="26">Ch</text>`+L('M-22 16c10 6 34 6 44 0',1.6)],
-  'pinot-noir':[ZW.pruim,`<text x="0" y="9" text-anchor="middle" font-family="Limelight,Georgia,serif" font-size="26">PN</text>`+L('M-22 16c10 6 34 6 44 0',1.6)],
-  'sauvignon-blanc':[ZW.groen,`<text x="0" y="9" text-anchor="middle" font-family="Limelight,Georgia,serif" font-size="26">SB</text>`+L('M-22 16c10 6 34 6 44 0',1.6)],
-  'syrah':[ZW.zwart,`<text x="0" y="9" text-anchor="middle" font-family="Limelight,Georgia,serif" font-size="26">Sy</text>`+L('M-22 16c10 6 34 6 44 0',1.6)],
-  'cabernet':[ZW.bordeaux,`<text x="0" y="9" text-anchor="middle" font-family="Limelight,Georgia,serif" font-size="26">CS</text>`+L('M-22 16c10 6 34 6 44 0',1.6)],
+  'chardonnay':[ZW.oker,`<text x="0" y="9" text-anchor="middle" font-family="Playfair Display,Georgia,serif" font-weight="700" font-size="26">Ch</text>`+L('M-22 16c10 6 34 6 44 0',1.6)],
+  'pinot-noir':[ZW.pruim,`<text x="0" y="9" text-anchor="middle" font-family="Playfair Display,Georgia,serif" font-weight="700" font-size="26">PN</text>`+L('M-22 16c10 6 34 6 44 0',1.6)],
+  'sauvignon-blanc':[ZW.groen,`<text x="0" y="9" text-anchor="middle" font-family="Playfair Display,Georgia,serif" font-weight="700" font-size="26">SB</text>`+L('M-22 16c10 6 34 6 44 0',1.6)],
+  'syrah':[ZW.zwart,`<text x="0" y="9" text-anchor="middle" font-family="Playfair Display,Georgia,serif" font-weight="700" font-size="26">Sy</text>`+L('M-22 16c10 6 34 6 44 0',1.6)],
+  'cabernet':[ZW.bordeaux,`<text x="0" y="9" text-anchor="middle" font-family="Playfair Display,Georgia,serif" font-weight="700" font-size="26">CS</text>`+L('M-22 16c10 6 34 6 44 0',1.6)],
   'bubbels':[ZW.goud,P('M-6 26V2c-2-4-2-10 0-14h12c2 4 2 10 0 14v24z M-6-14h12v-4h-12z')+P('M-2-22h4l2-6h-8z')+C(-12,-22,2)+C(12,-24,2.4)+C(-16,-12,1.6)+C(16,-14,1.6)],
   'icons':[ZW.zwart,P('M-22 12l-4-26 14 12 12-20 12 20 14-12-4 26z M-22 14h44v6h-44z')+C(-26,-16,2.6)+C(0,-28,2.6)+C(26,-16,2.6)],
 };
@@ -97,9 +97,9 @@ function waxSeal(key,label,o={}){
   if(o.ghost) return `<svg viewBox="-75 -75 150 150" class="wax ghost" aria-hidden="true"><defs>${text}</defs>
     <circle r="56" fill="none" stroke="rgba(233,211,160,.28)" stroke-width="1.5" stroke-dasharray="3 4"/>
     <circle r="48" fill="rgba(0,0,0,.18)" stroke="rgba(233,211,160,.18)"/><circle r="36" fill="none" stroke="rgba(233,211,160,.2)"/>
-    <g fill="rgba(233,211,160,.28)" stroke="rgba(233,211,160,.45)" stroke-width=".9" transform="scale(1.22)">${emb}</g>${num?`<text y="31" text-anchor="middle" font-family="Limelight,Georgia,serif" font-size="9" fill="rgba(233,211,160,.4)">${num}</text>`:''}
-    <text font-family="Cormorant Garamond,Georgia,serif" font-weight="700" font-size="${fs}" letter-spacing="2" fill="rgba(233,211,160,.42)"><textPath href="#${id}t" startOffset="25%" text-anchor="middle">${esc(t)}</textPath></text></svg>`;
-  const badge=o.done?`<g transform="translate(0 56)"><path d="M-36-7h72l-7 8 7 8h-72l7-8z" fill="#C9A253" stroke="#7A5A1C"/><text y="4.5" text-anchor="middle" font-family="Limelight,Georgia,serif" font-size="8" letter-spacing="1.4" fill="#3A2418">VOLTOOID</text></g>`
+    <g fill="rgba(233,211,160,.28)" stroke="rgba(233,211,160,.45)" stroke-width=".9" transform="scale(1.22)">${emb}</g>${num?`<text y="31" text-anchor="middle" font-family="Playfair Display,Georgia,serif" font-weight="700" font-size="9" fill="rgba(233,211,160,.4)">${num}</text>`:''}
+    <text font-family="Playfair Display,Georgia,serif" font-weight="700" font-size="${fs}" letter-spacing="2" fill="rgba(233,211,160,.42)"><textPath href="#${id}t" startOffset="25%" text-anchor="middle">${esc(t)}</textPath></text></svg>`;
+  const badge=o.done?`<g transform="translate(0 56)"><path d="M-36-7h72l-7 8 7 8h-72l7-8z" fill="#C9A253" stroke="#7A5A1C"/><text y="4.5" text-anchor="middle" font-family="Libre Franklin,sans-serif" font-weight="700" font-size="8" letter-spacing="1.4" fill="#3A2418">VOLTOOID</text></g>`
     :o.count!=null?`<g transform="translate(44 40)"><circle r="15" fill="#1F2622" stroke="#C9A253" stroke-width="1.6"/><text y="4" text-anchor="middle" font-family="Libre Franklin,sans-serif" font-weight="600" font-size="11" fill="#F6E2A8">${o.count}</text></g>`
     :o.have!=null?`<g transform="translate(44 40)"><circle r="15" fill="#1F2622" stroke="#C9A253" stroke-width="1.6"/><text y="4" text-anchor="middle" font-family="Libre Franklin,sans-serif" font-weight="600" font-size="${String(o.have+'/'+o.tot).length>4?8.5:10.5}" fill="#F6E2A8">${o.have}/${o.tot}</text></g>`:'';
   return `<svg viewBox="-75 -75 150 150" class="wax" aria-hidden="true"><defs>
@@ -112,7 +112,7 @@ function waxSeal(key,label,o={}){
     <circle r="49" fill="url(#${id}i)" filter="url(#${id}e)"/>
     <circle r="49" fill="none" stroke="rgba(0,0,0,.35)" stroke-width="1.2"/><circle r="37" fill="none" stroke="rgba(255,255,255,.18)"/>
     <g fill="${w[2]}" stroke="${w[1]}" stroke-width=".9" filter="url(#${id}e)" opacity=".85" transform="scale(1.22)">${emb}</g>
-    ${num?`<text y="32" text-anchor="middle" font-family="Limelight,Georgia,serif" font-size="9" fill="${w[2]}" filter="url(#${id}e)">${num}</text>`:''}
-    <text font-family="Cormorant Garamond,Georgia,serif" font-weight="700" font-size="${fs}" letter-spacing="2" fill="${w[2]}" filter="url(#${id}e)"><textPath href="#${id}t" startOffset="25%" text-anchor="middle">${esc(t)}</textPath></text>
+    ${num?`<text y="32" text-anchor="middle" font-family="Playfair Display,Georgia,serif" font-weight="700" font-size="9" fill="${w[2]}" filter="url(#${id}e)">${num}</text>`:''}
+    <text font-family="Playfair Display,Georgia,serif" font-weight="700" font-size="${fs}" letter-spacing="2" fill="${w[2]}" filter="url(#${id}e)"><textPath href="#${id}t" startOffset="25%" text-anchor="middle">${esc(t)}</textPath></text>
     <path d="M-50-22c4-14 14-26 28-32" stroke="#fff" stroke-opacity=".3" stroke-width="3" fill="none" stroke-linecap="round"/>${badge}</svg>`;
 }
