@@ -235,6 +235,7 @@ button{font:inherit;color:inherit}
 .uinfo h3,.uinfo .maker,.uinfo .facts{margin-left:6px;margin-right:6px}
 .fa .toprow{padding-left:16px!important;padding-right:16px!important}
 .mini .mname,.mini .mnr{padding:0 3px}
+.mini .mname{overflow-wrap:anywhere}
 .mband .mname,.mband .mnr{padding:0 4px}
 
 /* Effect layers */
@@ -1138,10 +1139,7 @@ body.viewing #memo,body.viewing #fav,body.viewing [data-top],body.viewing .gidbt
 .t-ultra:not(.fa) .facts{color:#E6F0FA;border-top-color:rgba(158,196,240,.35)}.t-ultra:not(.fa) .facts dt{color:#8FB3DA}
 .mini.t-ultra:not(.fa){background:radial-gradient(120% 70% at 30% 0%,#25457A,#0D1B36 75%);box-shadow:inset 0 0 0 1.5px #C6E6FF,inset 0 0 0 3px rgba(181,200,255,.45),0 0 12px rgba(120,170,255,.55)}
 .mini.t-ultra .mname{color:#E6F3FF}.mini.t-ultra .mnr{color:#9EC4F0}
-/* Mini-etiket: zeldzaamheid ook in de naam zelf, niet alleen in rand/achtergrond.
-   :not(.fa) houdt de grote favoriet-kaart (bovenin Top 10) buiten schot — die heeft zijn eigen crème-tekst voor leesbaarheid op kunstwerk-achtergrond. */
-.mini.t-rare:not(.fa) .mname,.mini.t-superrare:not(.fa) .mname{background:linear-gradient(135deg,#55606A,#9099A1 35%,#454E55 60%,#7D868D);-webkit-background-clip:text;background-clip:text;color:transparent}
-.mini.t-ultra:not(.fa) .mname,.mini.t-icon:not(.fa) .mname{background:var(--gilt);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* Mini-etiket: de zeldzaamheid zit in de gouden lijn boven het jaartal (tekst blijft effen voor leesbaarheid) */
 .mini.t-rare:not(.fa) .mnr,.mini.t-superrare:not(.fa) .mnr,.mini.t-ultra:not(.fa) .mnr,.mini.t-icon:not(.fa) .mnr{border-top-color:rgba(201,162,83,.4)}
 .t-ultra:not(.fa) .shine{background:repeating-linear-gradient(115deg,rgba(255,255,255,0) 0%,rgba(190,225,255,.35) 6%,rgba(255,255,255,0) 12%);background-size:300% 300%;background-position:calc(var(--mx)*100%) calc(var(--my)*100%);mix-blend-mode:screen}
 /* Leren Legende-kaarten (legendes.js) */
@@ -1323,21 +1321,21 @@ body.onlysamen .slot:not(:has(.mini.samen)) .sleeve>*{opacity:.18;filter:graysca
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
-<script>window.VI_V='20261020-192423'</script>
-<script src="data.js?v=20261020-192423"></script>
-<script src="art.js?v=20261020-192423"></script>
-<script src="gids.js?v=20261020-192423"></script>
-<script src="maps.js?v=20261020-192423"></script>
-<script src="zegels.js?v=20261020-192423"></script>
-<script src="landen.js?v=20261020-192423"></script>
-<script src="etiket.js?v=20261020-192423"></script>
-<script src="legendes.js?v=20261020-192423"></script>
-<script src="fullart.js?v=20261020-192423"></script>
-<script src="stickers.js?v=20261020-192423"></script>
-<script src="kistjes.js?v=20261020-192423"></script>
-<script src="vrienden.js?v=20261020-192423"></script>
-<script src="push.js?v=20261020-192423"></script>
-<script src="wereldbol.js?v=20261020-192423"></script>
+<script>window.VI_V='20261020-202435'</script>
+<script src="data.js?v=20261020-202435"></script>
+<script src="art.js?v=20261020-202435"></script>
+<script src="gids.js?v=20261020-202435"></script>
+<script src="maps.js?v=20261020-202435"></script>
+<script src="zegels.js?v=20261020-202435"></script>
+<script src="landen.js?v=20261020-202435"></script>
+<script src="etiket.js?v=20261020-202435"></script>
+<script src="legendes.js?v=20261020-202435"></script>
+<script src="fullart.js?v=20261020-202435"></script>
+<script src="stickers.js?v=20261020-202435"></script>
+<script src="kistjes.js?v=20261020-202435"></script>
+<script src="vrienden.js?v=20261020-202435"></script>
+<script src="push.js?v=20261020-202435"></script>
+<script src="wereldbol.js?v=20261020-202435"></script>
 <script>
 const SB_URL='https://fneiobwtubeehjqnzeta.supabase.co';
 const SB_KEY='sb_publishable_vpOCr1D2DfYbpBEcAhdvSg_f1dcs5OA'; // publieke sleutel, bedoeld voor de browser
@@ -1905,7 +1903,7 @@ function wireLogin(el){
     if(authStep==='forgot'){
       if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em())){showErr('Vul een geldig e-mailadres in.');return}
       btn.disabled=true;btn.textContent='Bezig…';
-      const {error}=await sb.auth.resetPasswordForEmail(em(),{redirectTo:location.href.split('#')[0]});
+      const {error}=await sb.auth.resetPasswordForEmail(em(),{redirectTo:'https://vineder.nl/'});
       btn.disabled=false;btn.textContent='Stuur resetlink';
       if(error){showErr('Versturen lukte niet. Probeer het opnieuw.');return}
       pendingEmail=em();go2('forgotsent');return;
@@ -2169,6 +2167,26 @@ async function loadAlbum(){
 
 /* ---------- bladeren ---------- */
 const stack=$('#stack');
+/* Namen op mini-kaarten passend maken: het langste woord moet op één regel passen (anders kleiner zetten, nooit afkappen) */
+const fitMeas=document.createElement('span');
+fitMeas.style.cssText='position:fixed;left:-9999px;top:0;visibility:hidden;white-space:nowrap;pointer-events:none';
+document.body.appendChild(fitMeas);
+function fitNames(root){
+  (root||document).querySelectorAll('.mini .mname:not([data-fit])').forEach(el=>{
+    const cs=getComputedStyle(el),avail=el.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);
+    if(!(avail>0))return; // nog niet zichtbaar: volgende keer opnieuw
+    // meet elk woord los, buiten de -webkit-box van .mname, in het echte lettertype
+    fitMeas.style.fontFamily=cs.fontFamily;fitMeas.style.fontWeight=cs.fontWeight;
+    fitMeas.style.fontSize=cs.fontSize;fitMeas.style.letterSpacing=cs.letterSpacing;
+    let w=0;
+    for(const t of el.textContent.trim().split(/\s+/)){fitMeas.textContent=t;w=Math.max(w,fitMeas.offsetWidth)}
+    if(w>avail)el.style.fontSize=Math.max(7,Math.floor(parseFloat(cs.fontSize)*avail/w*.97*10)/10)+'px';
+    el.dataset.fit='1';
+  });
+}
+function refitNames(){document.querySelectorAll('.mini .mname[data-fit]').forEach(e=>{e.removeAttribute('data-fit');e.style.fontSize=''});fitNames()}
+let fitQ=0;new MutationObserver(()=>{if(!fitQ)fitQ=requestAnimationFrame(()=>{fitQ=0;fitNames()})}).observe(document.body,{childList:true,subtree:true});
+if(document.fonts){document.fonts.ready.then(refitNames);document.fonts.addEventListener('loadingdone',refitNames)}
 function renderChrome(){
   const used=session?scansToday():0;
   const sc=$('#scan'),spent=!!session&&used>=LIMIT;
