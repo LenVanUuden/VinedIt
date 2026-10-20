@@ -56,7 +56,7 @@ async function viewFriend(id,name){
   if(!viewing)mineSaved={cards,ownedKeys,settings,cur,LBL:{...LBL}};
   viewing={id:data.id,name:data.name};
   for(const k in LBL)delete LBL[k];
-  settings={name:data.name,cover:data.cover||'bordeaux',pages:data.pages||'zwart'};applySettings();
+  settings={name:data.name,cover:data.cover||'bordeaux',pages:data.pages||'zwart',memberNo:data.member_no||null};applySettings();
   cards=[];ownedKeys=new Set();
   for(const r of data.cards||[]){if(!r.wine)continue;cards.push(toCard(r,r.wine))}
   STK_VIEW=data.stickers||{};

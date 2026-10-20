@@ -307,7 +307,10 @@ button{font:inherit;color:inherit}
 .page.cover{background-color:var(--leather);background-image:linear-gradient(90deg,rgba(0,0,0,.35),rgba(0,0,0,0) 14px),var(--leathergrain);align-items:center;justify-content:center;gap:22px;cursor:pointer;box-shadow:inset 0 0 30px rgba(0,0,0,.35),1px 0 0 #2a0c12}
 .cover .frame{border:1.5px solid rgba(210,174,98,.75);outline:1px solid rgba(210,174,98,.5);outline-offset:5px;padding:34px 22px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;width:78%;box-sizing:border-box;box-shadow:inset 0 1px 3px rgba(0,0,0,.5),0 1px 0 rgba(255,255,255,.07)}
 .cover h2{font-size:46px;letter-spacing:.04em;margin:0;white-space:nowrap}
-.crest{width:58px;height:auto;opacity:.85}
+/* Merk-etiket op de omslag (vervangt het oude kader + druiventros) */
+.cover .frame.etk{border:0;outline:0;box-shadow:none;padding:0;width:84%;max-width:300px;gap:14px}
+.cover .frame.etk .etiket{display:block;width:100%;height:auto}
+.brand .etkmini{display:block;height:28px;width:auto}
 .open{background:none;border:1px solid rgba(210,174,98,.55);color:var(--gold-soft);border-radius:999px;padding:8px 18px;font-size:13px;letter-spacing:.04em;cursor:pointer}
 
 /* Contents */
@@ -1305,7 +1308,7 @@ body.onlysamen .slot:not(:has(.mini.samen)) .sleeve>*{opacity:.18;filter:graysca
 <div class="app">
   <header class="top">
     <button class="menubtn" data-act="menu" aria-label="Menu"><span></span><span></span><span></span></button>
-    <p class="brand">Vineder</p>
+    <p class="brand"><svg class="etkmini" viewBox="0 0 104 30" role="img" aria-label="Vineder"><path d="M5,1 H99 A4,4 0 0 0 103,5 V25 A4,4 0 0 0 99,29 H5 A4,4 0 0 0 1,25 V5 A4,4 0 0 0 5,1 Z" fill="#F7F1E3"/><path d="M6.5,3.5 H97.5 A5,5 0 0 0 100.5,6.5 V23.5 A5,5 0 0 0 97.5,26.5 H6.5 A5,5 0 0 0 3.5,23.5 V6.5 A5,5 0 0 0 6.5,3.5 Z" fill="none" stroke="#B38B45" stroke-width=".7"/><text x="52" y="21" text-anchor="middle" font-family="Playfair Display,Georgia,serif" font-weight="900" font-size="17" style="fill:var(--leather)">Vineder</text></svg></p>
     <button class="quota" data-info="scans" aria-label="Scans vandaag, uitleg"><span>Scans vandaag <i class="ic">i</i></span><div class="dots" id="dots"></div></button>
   </header>
   <nav class="crumbs" id="tabs" aria-label="Waar ben ik"></nav>
@@ -1320,21 +1323,21 @@ body.onlysamen .slot:not(:has(.mini.samen)) .sleeve>*{opacity:.18;filter:graysca
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
-<script>window.VI_V='20261020-174500'</script>
-<script src="data.js?v=20261020-174500"></script>
-<script src="art.js?v=20261020-174500"></script>
-<script src="gids.js?v=20261020-174500"></script>
-<script src="maps.js?v=20261020-174500"></script>
-<script src="zegels.js?v=20261020-174500"></script>
-<script src="landen.js?v=20261020-174500"></script>
-<script src="etiket.js?v=20261020-174500"></script>
-<script src="legendes.js?v=20261020-174500"></script>
-<script src="fullart.js?v=20261020-174500"></script>
-<script src="stickers.js?v=20261020-174500"></script>
-<script src="kistjes.js?v=20261020-174500"></script>
-<script src="vrienden.js?v=20261020-174500"></script>
-<script src="push.js?v=20261020-174500"></script>
-<script src="wereldbol.js?v=20261020-174500"></script>
+<script>window.VI_V='20261020-192423'</script>
+<script src="data.js?v=20261020-192423"></script>
+<script src="art.js?v=20261020-192423"></script>
+<script src="gids.js?v=20261020-192423"></script>
+<script src="maps.js?v=20261020-192423"></script>
+<script src="zegels.js?v=20261020-192423"></script>
+<script src="landen.js?v=20261020-192423"></script>
+<script src="etiket.js?v=20261020-192423"></script>
+<script src="legendes.js?v=20261020-192423"></script>
+<script src="fullart.js?v=20261020-192423"></script>
+<script src="stickers.js?v=20261020-192423"></script>
+<script src="kistjes.js?v=20261020-192423"></script>
+<script src="vrienden.js?v=20261020-192423"></script>
+<script src="push.js?v=20261020-192423"></script>
+<script src="wereldbol.js?v=20261020-192423"></script>
 <script>
 const SB_URL='https://fneiobwtubeehjqnzeta.supabase.co';
 const SB_KEY='sb_publishable_vpOCr1D2DfYbpBEcAhdvSg_f1dcs5OA'; // publieke sleutel, bedoeld voor de browser
@@ -1390,7 +1393,7 @@ applySettings();
 async function loadSettings(){
   try{
     const {data,error}=await sb.from('collectors').select('*').maybeSingle();
-    if(!error&&data){LIMIT=data.daily_limit||3;settings={...settings,name:data.display_name||'',cover:data.cover_color||'bordeaux',pages:data.page_color||'zwart'};applySettings()}
+    if(!error&&data){LIMIT=data.daily_limit||3;settings={...settings,name:data.display_name||'',cover:data.cover_color||'bordeaux',pages:data.page_color||'zwart',memberNo:data.member_no||null};applySettings()}
     else if(!error){
       // Nieuw account: naam die bij het aanmaken is ingevuld, als omslagnaam vastzetten
       const dn=session?.user?.user_metadata?.display_name;
@@ -1788,13 +1791,41 @@ function slotHTML(c,label,d,gid,n){
   const stk=c&&n>1;
   return `<div class="slot${stk?' stacked':''}"${stk?` data-stack="${esc(gid)}"`:''}><div class="sleeve">${c?mini(c):empty}${stk?`<span class="scount">×${n}</span>`:''}</div><span class="slabel">${esc(label)}</span></div>`;
 }
-const CREST=`<svg class="crest" viewBox="0 0 60 64" aria-hidden="true"><g fill="none" stroke="#D2AE62" stroke-width="1.6"><path d="M30 4 C30 10 34 12 38 12"/><path d="M30 8 C24 6 18 9 17 14 C24 15 28 12 30 8Z"/>${[[22,22],[30,22],[38,22],[26,30],[34,30],[42,30],[18,30],[22,38],[30,38],[38,38],[26,46],[34,46],[30,54]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="4.6"/>`).join('')}</g></svg>`;
+
+/* ---------- merk: het etiket ----------
+   Vol etiket (met naam en lidnummer) op de omslag van een geopend album; compact etiket (alleen merk) bij inloggen/laden.
+   De inkt volgt de leerkleur van het album (var(--leather)). */
+function etiketSVG(name,nr){
+  const full=name!=null,G='#B38B45',H=full?250:166,ib=H-7,k=19.8;
+  const outer=`M74,50 H226 A14,14 0 0 0 240,64 V${H-14} A14,14 0 0 0 226,${H} H74 A14,14 0 0 0 60,${H-14} V64 A14,14 0 0 0 74,50 Z`;
+  const inner=`M${60+k},57 H${240-k} A21,21 0 0 0 233,${50+k} V${H-k} A21,21 0 0 0 ${240-k},${ib} H${60+k} A21,21 0 0 0 67,${H-k} V${50+k} A21,21 0 0 0 ${60+k},57 Z`;
+  // letter-spacing schuift gecentreerde tekst een halve spatie naar links: corrigeren met x + ls/2
+  const sp=(y,t,s,ls,attr)=>`<text x="${150+ls/2}" y="${y}" text-anchor="middle" font-family="Libre Franklin,sans-serif" font-weight="600" font-size="${s}" letter-spacing="${ls}" ${attr}>${t}</text>`;
+  const top=full?90:84,ly=top+11;
+  let body=`${sp(top,'EST. MMXXVI',8.5,3,`fill="${G}"`)}
+    <line x1="106" y1="${ly}" x2="140" y2="${ly}" stroke="${G}" stroke-width=".9"/><line x1="160" y1="${ly}" x2="194" y2="${ly}" stroke="${G}" stroke-width=".9"/>
+    <path d="M150,${ly-4} L154,${ly} L150,${ly+4} L146,${ly} Z" fill="${G}"/>
+    <text x="150" y="${full?152:140}" text-anchor="middle" font-family="Playfair Display,Georgia,serif" font-weight="900" font-size="40" style="fill:var(--leather)">Vineder</text>`;
+  if(full){
+    const raw='COLLECTIE VAN '+String(name).toUpperCase(),n=[...raw].length;
+    // passend maken binnen het etiket: eerst minder spatiëring, dan kleiner, als laatste samendrukken
+    const steps=[[8,2.6],[8,1.8],[8,1.1],[7.2,.9],[6.6,.6]];let st=steps[steps.length-1],squeeze='';
+    for(const s of steps){if(n*(s[0]*.68+s[1])<=150){st=s;break}}
+    if(n*(st[0]*.68+st[1])>150)squeeze=' textLength="150" lengthAdjust="spacingAndGlyphs"';
+    body+=`<line x1="96" y1="172" x2="204" y2="172" stroke="${G}" stroke-width=".9"/>
+    ${sp(194,esc(raw),st[0],squeeze?0:st[1],`style="fill:var(--leather)" fill-opacity=".8"${squeeze}`)}
+    ${nr?`<text x="150" y="216" text-anchor="middle" font-family="Playfair Display,Georgia,serif" font-weight="700" font-size="10" fill="${G}" style="font-variant-numeric:lining-nums">Nº ${String(nr).padStart(3,'0')}</text>`:''}`;
+  }
+  return `<svg class="etiket" viewBox="50 40 200 ${full?222:138}" role="img" aria-label="Vineder${full?' · collectie van '+esc(name):''}">
+    <defs><filter id="etkSh" x="-10%" y="-10%" width="120%" height="125%"><feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#000" flood-opacity=".4"/></filter></defs>
+    <path d="${outer}" fill="#F7F1E3" filter="url(#etkSh)"/><path d="${inner}" fill="none" stroke="${G}" stroke-width=".9"/>${body}</svg>`;
+}
 
 /* ---------- omslag met inloggen ---------- */
 function coverHTML(){
-  const frame=(sub)=>`<div class="frame"${session?'':' style="padding:22px 18px"'}><p class="eyebrow">Wijnkaartenalbum</p>${CREST}<h2 class="foil">Vineder</h2><p class="eyebrow">${sub}</p></div>`;
+  const frame=(sub)=>`<div class="frame etk">${etiketSVG(null)}<p class="eyebrow">${sub}</p></div>`;
   if(loading) return frame('Album wordt geladen')+'<p class="loading">Even geduld…</p>';
-  if(session) return frame('Collectie van '+esc(coverName()))+'<button class="open" data-go="1">Album openen</button>';
+  if(session) return `<div class="frame etk">${etiketSVG(coverName(),settings.memberNo)}</div><button class="open" data-go="1">Album openen</button>`;
   if(authStep==='login') return frame('Log in om je album te openen')+`<form class="login" id="login" novalidate>
       <label for="em">E-mailadres</label>
       <input id="em" type="email" autocomplete="username" inputmode="email" placeholder="naam@voorbeeld.nl" value="${esc(pendingEmail)}">
@@ -3167,7 +3198,7 @@ function openMenu(){
   const wide=(ic,label,attr)=>`<button class="mwide" style="--i:${n_++}" ${attr}>${MED(ic)}<span class="mlab">${label}</span></button>`;
   const legK=firstPageOf(x=>x.set&&x.set.id==='icons'),nL=st?st.lands.filter(l=>l!=='Overige landen').length:0,lists=SETS.filter(x=>x.part===2&&st&&st.visible[x.id]);
   const o=overlay(`<nav class="drawer-panel" aria-label="Menu">
-      <div class="dhead"><p class="brand">Vineder</p><button class="dclose" type="button" aria-label="Menu sluiten">${I('close')}</button></div>${session?`<p class="mwho">${esc(coverName?coverName():'')}</p>
+      <div class="dhead"><p class="brand">${document.querySelector('.top .brand').innerHTML}</p><button class="dclose" type="button" aria-label="Menu sluiten">${I('close')}</button></div>${session?`<p class="mwho">${esc(coverName?coverName():'')}</p>
       <div class="mstats"><div><b>${cards.length}</b><span>kaarten</span></div><div><b>${nL}</b><span>${nL===1?'land':'landen'}</span></div><div><b>${cards.filter(c=>c.rar==='icon').length}</b><span>legendes</span></div></div>`:''}
       ${session?`<div class="mwides">${wide('book','Inhoud van je album','data-mact="jump"')}</div>
       <p class="mgroup">Voor jou</p>
