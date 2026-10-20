@@ -1314,20 +1314,21 @@ body.onlysamen .slot:not(:has(.mini.samen)) .sleeve>*{opacity:.18;filter:graysca
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
-<script>window.VI_V='20261019-172213'</script>
-<script src="data.js?v=20261019-172213"></script>
-<script src="art.js?v=20261019-172213"></script>
-<script src="gids.js?v=20261019-172213"></script>
-<script src="maps.js?v=20261019-172213"></script>
-<script src="zegels.js?v=20261019-172213"></script>
-<script src="landen.js?v=20261019-172213"></script>
-<script src="etiket.js?v=20261019-172213"></script>
-<script src="legendes.js?v=20261019-172213"></script>
-<script src="fullart.js?v=20261019-172213"></script>
-<script src="stickers.js?v=20261019-172213"></script>
-<script src="kistjes.js?v=20261019-172213"></script>
-<script src="vrienden.js?v=20261019-172213"></script>
-<script src="wereldbol.js?v=20261019-172213"></script>
+<script>window.VI_V='20261020-093038'</script>
+<script src="data.js?v=20261020-093038"></script>
+<script src="art.js?v=20261020-093038"></script>
+<script src="gids.js?v=20261020-093038"></script>
+<script src="maps.js?v=20261020-093038"></script>
+<script src="zegels.js?v=20261020-093038"></script>
+<script src="landen.js?v=20261020-093038"></script>
+<script src="etiket.js?v=20261020-093038"></script>
+<script src="legendes.js?v=20261020-093038"></script>
+<script src="fullart.js?v=20261020-093038"></script>
+<script src="stickers.js?v=20261020-093038"></script>
+<script src="kistjes.js?v=20261020-093038"></script>
+<script src="vrienden.js?v=20261020-093038"></script>
+<script src="push.js?v=20261020-093038"></script>
+<script src="wereldbol.js?v=20261020-093038"></script>
 <script>
 const SB_URL='https://fneiobwtubeehjqnzeta.supabase.co';
 const SB_KEY='sb_publishable_vpOCr1D2DfYbpBEcAhdvSg_f1dcs5OA'; // publieke sleutel, bedoeld voor de browser
@@ -1488,9 +1489,11 @@ function openSettings(){
         ${Object.entries(PAGESTYLE).map(([k,l])=>`<label class="sw pg-${k}"><input type="radio" name="pages" value="${k}"${settings.pages===k?' checked':''}><span class="swpage" aria-hidden="true"></span><span>${l}</span></label>`).join('')}
       </div></fieldset>
       ${LIMIT>3?`<label class="chk"><input type="checkbox" id="sdemo"${settings.demo?' checked':''}> Testmodus: demowijnen in plaats van de camera</label>`:''}
+      ${session?pushSettingsHTML():''}
       <p class="err" id="serr" hidden></p>
       <div class="actions"><button class="btn" type="button" id="close">Annuleren</button><button class="btn primary" type="submit">Opslaan</button></div>
     </form>`);
+  if(session)pushSettingsInit(o);
   const f=o.querySelector('#sf'),sn=o.querySelector('#sn'),err=o.querySelector('#serr');
   const showErr=m=>{err.textContent=m;err.hidden=!m};
   sn.oninput=()=>{showErr('');o.querySelector('#sprev').textContent='Collectie van '+(sn.value.trim()||firstName())};
@@ -1499,6 +1502,7 @@ function openSettings(){
     e.preventDefault();
     const name=sn.value.trim().replace(/\s+/g,' ');
     if(name&&!/^[\p{L}\p{N} .'&-]{1,24}$/u.test(name)){showErr('Gebruik alleen letters, cijfers, spaties en . \' & - (maximaal 24 tekens).');sn.focus();return}
+    if(session)pushSettingsSave(f); // eerst: toestemming vragen moet direct binnen de tik
     const dm=f.querySelector('#sdemo');const next={name,cover:f.cover.value,pages:f.pages.value,demo:dm?dm.checked:!!settings.demo};
     const btn=f.querySelector('[type=submit]');btn.disabled=true;btn.textContent='Opslaan…';
     let synced=false;
@@ -3230,7 +3234,7 @@ async function logout(){
   try{const {data}=await sb.auth.getSession();session=data.session}catch(e){session=null}
   if(session)await loadAlbum();
   loading=false;refresh();go(0,true);fitAlbum();
-  if(session){let seen=null;try{seen=localStorage.getItem('vi.tour')}catch(e){seen='1'}if(!seen)setTimeout(openTour,700);else acceptPendingInvite()}
+  if(session){let seen=null;try{seen=localStorage.getItem('vi.tour')}catch(e){seen='1'}if(!seen)setTimeout(openTour,700);else{acceptPendingInvite();setTimeout(pushBoot,2500)}}
   sb.auth.onAuthStateChange((ev,s)=>{
     if(ev==='SIGNED_OUT'&&session){session=null;cards=[];ownedKeys=new Set();refresh();cur=0;go(0,true)}
     else if(ev==='SIGNED_IN'&&s&&!session&&!verifying){session=s;loadAlbum().then(()=>{go(0,true);let seen=null;try{seen=localStorage.getItem('vi.tour')}catch(e){seen='1'}if(!seen)setTimeout(openTour,700);else acceptPendingInvite()})}
