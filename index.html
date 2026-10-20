@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#2A1D16">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Vined It">
+<meta name="apple-mobile-web-app-title" content="Vineder">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-180.png">
-<title>Vined It</title>
+<title>Vineder</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Limelight&family=Libre+Franklin:wght@400;500;600;700&family=Dancing+Script:wght@500;600;700&family=Oswald:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=UnifrakturMaguntia&display=swap">
@@ -1299,7 +1299,7 @@ body.onlysamen .slot:not(:has(.mini.samen)) .sleeve>*{opacity:.18;filter:graysca
 <div class="app">
   <header class="top">
     <button class="menubtn" data-act="menu" aria-label="Menu"><span></span><span></span><span></span></button>
-    <p class="brand">Vined It</p>
+    <p class="brand">Vineder</p>
     <button class="quota" data-info="scans" aria-label="Scans vandaag, uitleg"><span>Scans vandaag <i class="ic">i</i></span><div class="dots" id="dots"></div></button>
   </header>
   <nav class="crumbs" id="tabs" aria-label="Waar ben ik"></nav>
@@ -1314,21 +1314,21 @@ body.onlysamen .slot:not(:has(.mini.samen)) .sleeve>*{opacity:.18;filter:graysca
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
-<script>window.VI_V='20261020-121557'</script>
-<script src="data.js?v=20261020-121557"></script>
-<script src="art.js?v=20261020-121557"></script>
-<script src="gids.js?v=20261020-121557"></script>
-<script src="maps.js?v=20261020-121557"></script>
-<script src="zegels.js?v=20261020-121557"></script>
-<script src="landen.js?v=20261020-121557"></script>
-<script src="etiket.js?v=20261020-121557"></script>
-<script src="legendes.js?v=20261020-121557"></script>
-<script src="fullart.js?v=20261020-121557"></script>
-<script src="stickers.js?v=20261020-121557"></script>
-<script src="kistjes.js?v=20261020-121557"></script>
-<script src="vrienden.js?v=20261020-121557"></script>
-<script src="push.js?v=20261020-121557"></script>
-<script src="wereldbol.js?v=20261020-121557"></script>
+<script>window.VI_V='20261020-144748'</script>
+<script src="data.js?v=20261020-144748"></script>
+<script src="art.js?v=20261020-144748"></script>
+<script src="gids.js?v=20261020-144748"></script>
+<script src="maps.js?v=20261020-144748"></script>
+<script src="zegels.js?v=20261020-144748"></script>
+<script src="landen.js?v=20261020-144748"></script>
+<script src="etiket.js?v=20261020-144748"></script>
+<script src="legendes.js?v=20261020-144748"></script>
+<script src="fullart.js?v=20261020-144748"></script>
+<script src="stickers.js?v=20261020-144748"></script>
+<script src="kistjes.js?v=20261020-144748"></script>
+<script src="vrienden.js?v=20261020-144748"></script>
+<script src="push.js?v=20261020-144748"></script>
+<script src="wereldbol.js?v=20261020-144748"></script>
 <script>
 const SB_URL='https://fneiobwtubeehjqnzeta.supabase.co';
 const SB_KEY='sb_publishable_vpOCr1D2DfYbpBEcAhdvSg_f1dcs5OA'; // publieke sleutel, bedoeld voor de browser
@@ -1786,7 +1786,7 @@ const CREST=`<svg class="crest" viewBox="0 0 60 64" aria-hidden="true"><g fill="
 
 /* ---------- omslag met inloggen ---------- */
 function coverHTML(){
-  const frame=(sub)=>`<div class="frame"${session?'':' style="padding:22px 18px"'}><p class="eyebrow">Wijnkaartenalbum</p>${CREST}<h2 class="foil">Vined It</h2><p class="eyebrow">${sub}</p></div>`;
+  const frame=(sub)=>`<div class="frame"${session?'':' style="padding:22px 18px"'}><p class="eyebrow">Wijnkaartenalbum</p>${CREST}<h2 class="foil">Vineder</h2><p class="eyebrow">${sub}</p></div>`;
   if(loading) return frame('Album wordt geladen')+'<p class="loading">Even geduld…</p>';
   if(session) return frame('Collectie van '+esc(coverName()))+'<button class="open" data-go="1">Album openen</button>';
   if(authStep==='login') return frame('Log in om je album te openen')+`<form class="login" id="login" novalidate>
@@ -1886,7 +1886,7 @@ function wireLogin(el){
 }
 
 /* ---------- pagina's ---------- */
-function pageFoot(i){return `<div class="pfoot"><span>Vined It</span><span>Blad ${i}</span></div>`}
+function pageFoot(i){return `<div class="pfoot"><span>Vineder</span><span>Blad ${i}</span></div>`}
 function icCoins(info){return info.i.map(([a,b2,re,why,leg])=>{const own=iconOwned(re);return `<div class="icn${own?' own':''}${leg?' leg':''}"><span class="coin" title="${leg?'Legende':'Icoon'}">${leg?'♛':'✦'}</span><b>${esc(a)}</b><small>${own?'Je hebt hem!':esc(b2)}</small></div>`}).join('')}
 function iconCount(){let h=0,t=0;for(const k in LANDINFO)for(const x of LANDINFO[k].i){if(x[4])continue;t++;if(iconOwned(x[2]))h++}return [h,t]}
 function progress(have,n){return `<div class="progress"><span>${have} van ${n}</span><div class="bar"><span style="width:${have/n*100}%"></span></div></div>`}
@@ -1982,7 +1982,7 @@ function makePage(i){
 function makePage0(i){
   const p=pages[i],el=document.createElement('section');el.className='page';
   if(p.t==='cover'){el.classList.add('cover');el.innerHTML=coverHTML();wireLogin(el);return el}
-  if(p.t==='back'){el.classList.add('cover','backcover');el.innerHTML=`<div class="bcin"><p class="eyebrow">Wijnkaartenalbum</p><p class="bcbrand foil">Vined It</p><p class="eyebrow">${cards.length} ${cards.length===1?'wijn':'wijnen'} · ${st.lands.length} ${st.lands.length===1?'land':'landen'}</p></div>${!viewing&&!(STK.back||[]).length?`<p class="bchint">De achterkant is van jou. Plak hier je stickers.</p>`:''}`;return el}
+  if(p.t==='back'){el.classList.add('cover','backcover');el.innerHTML=`<div class="bcin"><p class="eyebrow">Wijnkaartenalbum</p><p class="bcbrand foil">Vineder</p><p class="eyebrow">${cards.length} ${cards.length===1?'wijn':'wijnen'} · ${st.lands.length} ${st.lands.length===1?'land':'landen'}</p></div>${!viewing&&!(STK.back||[]).length?`<p class="bchint">De achterkant is van jou. Plak hier je stickers.</p>`:''}`;return el}
   if(p.t==='inhoud'){
     const lists=SETS.filter(s=>s.part===2&&st.visible[s.id]);
     const hiddenLists=SETS.filter(s=>s.part===2&&!st.visible[s.id]).length;
@@ -2453,7 +2453,7 @@ function handleScanResult(d,before,photo,box,jaar){
   if(typeof d.scans_today==='number'&&serverToday!=null)serverToday=d.scans_today;
   const card=toCard(d.card,d.wine);setVintage(card,jaar);
   if(photo)uploadArt(card,photo,box);
-  /* Primeur: de eerste scan van deze wijn in heel Vined It */
+  /* Primeur: de eerste scan van deze wijn in heel Vineder */
   const wineIsNew=d.wine&&d.wine.created_at&&d.card&&d.card.created_at&&Math.abs(new Date(d.wine.created_at)-new Date(d.card.created_at))<15000;
   if(photo&&d.status==='new'&&card.first&&wineIsNew){card.primeur=true;if(LABEL_TIERS.includes(card.rar)&&!(d.wine.label_style&&d.wine.label_style.v===2))addPending(card)}
   cards.push(card);refresh();renderChrome();
@@ -2478,7 +2478,7 @@ const ICO={
 };
 function openCamera(){
   const used=scansToday();
-  const o=overlay(`<div class="sc-top"><p class="eyebrow">Vined It · scanner</p><p class="status">${BACKCHECK&&BACKCHECK.armed&&Date.now()-BACKCHECK.t<5*60*1000?'Richt op de achterkant':'Richt op het etiket'}</p>
+  const o=overlay(`<div class="sc-top"><p class="eyebrow">Vineder · scanner</p><p class="status">${BACKCHECK&&BACKCHECK.armed&&Date.now()-BACKCHECK.t<5*60*1000?'Richt op de achterkant':'Richt op het etiket'}</p>
       <div class="sc-left" aria-label="${Math.max(0,LIMIT-used)} scans over vandaag">${LIMIT<=10?Array.from({length:LIMIT},(_,i)=>`<i class="${i<used?'used':''}"></i>`).join(''):`<span class="note">${Math.max(0,LIMIT-used)} scans over</span>`}</div></div>
     <div class="viewfinder" id="vf"><video id="vid" playsinline muted autoplay></video><div class="corners"></div><span class="vtag">Etiket in het kader</span><div class="flash"></div></div>
     <p class="hint" id="schint">${BACKCHECK&&BACKCHECK.armed?'Draai de fles om: het achteretiket, de capsule, of gewoon de achterkant van de fles.':'Houd de fles recht, met naam en producent scherp in het kader.'}</p>
@@ -2507,7 +2507,7 @@ function openCamera(){
     vid.addEventListener('loadedmetadata',ready);vid.play().catch(()=>{});ready();
   }).catch(err=>{
     const denied=err&&(err.name==='NotAllowedError'||err.name==='SecurityError');
-    fail(denied?'Vined It mag je camera niet gebruiken. Geef toestemming in de instellingen van je browser, of gebruik de gewone camera.':'De camera kon niet worden gestart.');
+    fail(denied?'Vineder mag je camera niet gebruiken. Geef toestemming in de instellingen van je browser, of gebruik de gewone camera.':'De camera kon niet worden gestart.');
   });
   shut.onclick=()=>{
     if(!vid.videoWidth)return;
@@ -2718,7 +2718,7 @@ function walkout(o,c,done){
 function fxPre(){const fx=document.createElement('div');fx.className='fx fx-pre';fx.innerHTML='<div class="fxrays"></div>';document.body.appendChild(fx);setTimeout(()=>fx.remove(),2600)}
 function reveal(c,news,title){
   const pm=c.primeur?`<div class="primeur" hidden><div class="prk">✦ PRIMEUR ✦</div><h2>Deze wijn heeft nog niemand gescand!</h2><p>Jij ontdekte hem als eerste.${PEND[c.wineId]?' Onze tekenaar zet zijn etiket nu speciaal voor jou op papier.':''}</p>${PEND[c.wineId]?'<p class="prstat"><span class="prdots"><i></i><i></i><i></i></span> Etiket wordt getekend · ±30 sec</p>':''}</div>`:'';
-  const o=overlay(`${pm}<p class="status">${title?esc(title):'Nieuwe kaart'}</p><div class="flipper g-${c.rar}" id="flip" tabindex="0" role="button" aria-label="Kaart openen" style="--g:${GLOW[c.rar]}"><div class="back"><span>Wijnkaart</span><b>Vined It</b><div class="seal">${esc((c.land||'').slice(0,3).toUpperCase())}</div></div>${bigCard(c)}</div><div class="wo" id="wo" hidden></div><p class="hint" id="h">Tik op de kaart om hem te openen.</p><div class="actions" id="acts" hidden><button class="btn" id="wmemo">${I('pen')} Herinnering schrijven</button><button class="btn primary" id="place">Bekijk in je album</button></div>`);
+  const o=overlay(`${pm}<p class="status">${title?esc(title):'Nieuwe kaart'}</p><div class="flipper g-${c.rar}" id="flip" tabindex="0" role="button" aria-label="Kaart openen" style="--g:${GLOW[c.rar]}"><div class="back"><span>Wijnkaart</span><b>Vineder</b><div class="seal">${esc((c.land||'').slice(0,3).toUpperCase())}</div></div>${bigCard(c)}</div><div class="wo" id="wo" hidden></div><p class="hint" id="h">Tik op de kaart om hem te openen.</p><div class="actions" id="acts" hidden><button class="btn" id="wmemo">${I('pen')} Herinnering schrijven</button><button class="btn primary" id="place">Bekijk in je album</button></div>`);
   const flip=o.querySelector('#flip'),card=flip.querySelector('.card');
   let busy=false;
   const open=()=>{if(busy||flip.classList.contains('open'))return;busy=true;
@@ -3161,7 +3161,7 @@ function openMenu(){
   const wide=(ic,label,attr)=>`<button class="mwide" style="--i:${n_++}" ${attr}>${MED(ic)}<span class="mlab">${label}</span></button>`;
   const legK=firstPageOf(x=>x.set&&x.set.id==='icons'),nL=st?st.lands.filter(l=>l!=='Overige landen').length:0,lists=SETS.filter(x=>x.part===2&&st&&st.visible[x.id]);
   const o=overlay(`<nav class="drawer-panel" aria-label="Menu">
-      <div class="dhead"><p class="brand">Vined It</p><button class="dclose" type="button" aria-label="Menu sluiten">${I('close')}</button></div>${session?`<p class="mwho">${esc(coverName?coverName():'')}</p>
+      <div class="dhead"><p class="brand">Vineder</p><button class="dclose" type="button" aria-label="Menu sluiten">${I('close')}</button></div>${session?`<p class="mwho">${esc(coverName?coverName():'')}</p>
       <div class="mstats"><div><b>${cards.length}</b><span>kaarten</span></div><div><b>${nL}</b><span>${nL===1?'land':'landen'}</span></div><div><b>${cards.filter(c=>c.rar==='icon').length}</b><span>legendes</span></div></div>`:''}
       ${session?`<div class="mwides">${wide('book','Inhoud van je album','data-mact="jump"')}</div>
       <p class="mgroup">Voor jou</p>
@@ -3220,7 +3220,7 @@ function openInfo(open,nest){
   const desc={common:'Alledaagse wijn, zoals een supermarktmerk. De regio als reisposter.',rare:'Een stap hoger: ±€20–60, of goedkoper maar zeldzaam in Nederland.',superrare:'Bijzonder: ±€60–200, vaak een gerenommeerde maker of Cru-niveau. Gouden lijst.',ultra:'Topwijn: ±€200 of meer, grote naam of topclassificatie. Saffierblauw.',icon:'De eenentwintig Legendes van de wereld, zoals Pétrus en Screaming Eagle. Prijs telt niet.'};
   const tiers=`<div class="tierlist">${TORDER.map(t=>`<div><span class="tsym">${TIERS[t].sym}</span><span><b>${TIERS[t].label}</b><br><small>${desc[t]}</small></span><span class="todd">${TIERS[t].odds}</span></div>`).join('')}</div>`;
   const sec=(id,ic,title,body)=>`<details class="howto" id="h-${id}"${open===id?' open':''}><summary>${MED(ic)}<span>${title}</span></summary><div class="hbody">${body}</div></details>`;
-  const o=overlay(`<p class="status">Hoe werkt Vined It?</p>
+  const o=overlay(`<p class="status">Hoe werkt Vineder?</p>
     <div class="howtos">
     ${sec('scan','camera','Scannen',`<p>Tik op <b>Scan een wijn</b> en richt de camera op het voorste etiket: recht, scherp en goed belicht. De app leest naam, maker, jaargang en herkomst, en maakt er een kaart van.</p><p>Je hebt <b>${LIMIT} scans per dag</b>. Een foto die niet herkend wordt, telt niet mee. Elke wijn levert één kaart op; de jaargang maakt niet uit.</p>`)}
     ${sec('klassen','sparkle','Kaarten en klassen',`<p><b>De wijn zelf bepaalt de klasse.</b> Bij een nieuwe wijn zoekt de app hem op: wat een fles van dat jaar kost, de classificatie (bijvoorbeeld Cru of Grand Cru), hoe bekend de maker is, hoe groot de oplage is, wat critici ervan vinden en of hij in Nederland te koop is. Een topjaar, een bewaarwijn op leeftijd of een magnum kan hem net een stap hoger tillen. Ouder is niet vanzelf beter: de meeste wijn is gemaakt om jong te drinken.</p>${tiers}<p>Iedereen krijgt voor dezelfde wijn dezelfde klasse. Op de kaart zie je <b>waarom</b>.</p><p><b>Full Art</b> is puur geluk: elke kaart heeft ±5% kans om als Full Art te verschijnen, met de afbeelding over de hele kaart en een holo-glans.</p>`)}

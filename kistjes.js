@@ -1,5 +1,5 @@
 /* =====================================================================
-   Vined It – stickerkistjes
+   Vineder – stickerkistjes
    Verdien een wijnkistje met stickers voor ontdekken, vrienden en verzamelen.
    Een kistje wordt "bezorgd", je krikt het open en POEF: drie stickers.
    Bewust geen kistjes voor veel drinken (scans per dag of week): we belonen
@@ -31,7 +31,7 @@ const PACK_ART={
   kompas:{n:'Kompas',svg:`<circle cx="50" cy="50" r="38" fill="${KG}"/><circle cx="50" cy="50" r="31" fill="#FBF6EC" stroke="#8F6B22" stroke-width="1.5"/><path d="M50 22l7 28-7 28-7-28z" fill="#7A1E2C"/><path d="M50 50l7 0-7 28-7-28z" fill="#3A2418"/><path d="M22 50l28-6 28 6-28 6z" fill="#C9A253" opacity=".6"/><circle cx="50" cy="50" r="3.5" fill="#3A2418"/><text x="50" y="18" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="8" fill="#3A2418">N</text>`},
   ballon:{n:'Luchtballon',svg:`<path d="M50 8c20 0 32 14 32 30 0 18-18 30-24 38H42c-6-8-24-20-24-38C18 22 30 8 50 8z" fill="#8E1F31"/><path d="M50 8c-8 4-12 18-12 30s6 26 4 38h16c-2-12 4-26 4-38S58 12 50 8z" fill="#C9A253"/><path d="M42 76l2 8h12l2-8" stroke="#7A4E26" stroke-width="1.5" fill="none"/><rect x="42" y="84" width="16" height="10" rx="2" fill="#9C6A3A"/><path d="M8 92c10-6 20-6 30 0" stroke="#5E8B3A" stroke-width="3" fill="none"/><path d="M62 94c10-6 22-6 30 0" stroke="#5E8B3A" stroke-width="3" fill="none"/>`},
   /* 6 landen */
-  paspoort:{n:'Wijnpaspoort',svg:`<rect x="24" y="12" width="52" height="76" rx="5" fill="#2A3D63"/><rect x="28" y="16" width="44" height="68" rx="3" fill="none" stroke="${KG}" stroke-width="1.2"/><circle cx="50" cy="44" r="12" fill="none" stroke="${KG}" stroke-width="2"/><path d="M38 44h24M50 32c-6 6-6 18 0 24M50 32c6 6 6 18 0 24" stroke="${KG}" stroke-width="1.4" fill="none"/><text x="50" y="70" text-anchor="middle" font-family="Limelight,Georgia,serif" font-size="7" letter-spacing="1" fill="${KG}">PASPOORT</text><text x="50" y="78" text-anchor="middle" font-family="Georgia,serif" font-size="5" letter-spacing="1" fill="${KG}">VINED IT</text>`},
+  paspoort:{n:'Wijnpaspoort',svg:`<rect x="24" y="12" width="52" height="76" rx="5" fill="#2A3D63"/><rect x="28" y="16" width="44" height="68" rx="3" fill="none" stroke="${KG}" stroke-width="1.2"/><circle cx="50" cy="44" r="12" fill="none" stroke="${KG}" stroke-width="2"/><path d="M38 44h24M50 32c-6 6-6 18 0 24M50 32c6 6 6 18 0 24" stroke="${KG}" stroke-width="1.4" fill="none"/><text x="50" y="70" text-anchor="middle" font-family="Limelight,Georgia,serif" font-size="7" letter-spacing="1" fill="${KG}">PASPOORT</text><text x="50" y="78" text-anchor="middle" font-family="Georgia,serif" font-size="5" letter-spacing="1" fill="${KG}">VINEDER</text>`},
   wereldbol:{n:'Gouden wereldbol',holo:true,svg:`<circle cx="50" cy="46" r="34" fill="#1F4A6B"/><path d="M28 30c8 2 10 8 18 6s8 8 2 12-4 12-10 10-12-8-10-16zM56 22c8 0 14 6 20 4 4 8 2 16-6 18s-6 10-12 8-4-12-2-18z" fill="${KG}"/><circle cx="50" cy="46" r="34" fill="none" stroke="${KG}" stroke-width="3"/><path d="M50 80v8M34 92h32" stroke="${KG}" stroke-width="5" stroke-linecap="round"/>`},
   vliegtuig:{n:'Vliegtuigje',svg:`<path d="M10 56l70-26c6-2 10 2 6 6L30 70z" fill="#FBF6EC" stroke="#3A5A7A" stroke-width="2.5"/><path d="M40 52l-10-22 8-2 18 18zM46 60l6 20-8 2-10-16z" fill="#3A5A7A"/><path d="M14 54l-6-10 6-2 8 8z" fill="#8E1F31"/><path d="M60 46h6M68 43h4" stroke="#3A5A7A" stroke-width="2"/>`},
   /* Alle kleuren */
@@ -145,7 +145,7 @@ function crateSVG(){
     <rect x="8" y="62" width="184" height="96" fill="url(#kgrain)"/>
     <path d="M8 94h184M8 128h184" stroke="#6B421C" stroke-width="2"/>
     <rect x="8" y="62" width="14" height="96" fill="#7A4A22"/><rect x="178" y="62" width="14" height="96" fill="#7A4A22"/>
-    <text x="100" y="110" text-anchor="middle" font-family="Limelight,Georgia,serif" font-size="17" letter-spacing="2" fill="#4A2A10" opacity=".75">VINED IT</text>
+    <text x="100" y="110" text-anchor="middle" font-family="Limelight,Georgia,serif" font-size="17" letter-spacing="2" fill="#4A2A10" opacity=".75">VINEDER</text>
     <text x="100" y="124" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" letter-spacing="3" fill="#4A2A10" opacity=".65">GRAND CRU · STICKERS</text>
     <g fill="#3A2410">${[[15,70],[15,150],[185,70],[185,150]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="2.2"/>`).join('')}</g></g>
    <g class="klid"><rect x="4" y="44" width="192" height="20" rx="2" fill="url(#kwood)"/><rect x="4" y="44" width="192" height="20" fill="url(#kgrain)"/><rect x="4" y="44" width="192" height="4" fill="#D8A066" opacity=".7"/>

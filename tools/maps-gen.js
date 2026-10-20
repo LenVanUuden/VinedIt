@@ -71,6 +71,6 @@ const cen={'Frankrijk':[2.5,46.6],'Italië':[12.5,42.8],'Spanje':[-3.6,40.2],'Po
  'Australië':[139,-34.8],'Nieuw-Zeeland':[173.5,-41.5],'Griekenland':[22.5,39.3],'Hongarije':[19.4,47.2],'Georgië':[44.3,42],'Libanon':[35.9,33.9],
  'Uruguay':[-56,-32.8],'België':[4.6,50.6],'Zwitserland':[8.2,46.8],'Canada':[-79.5,43.5],'Japan':[138.5,35.8],'Israël':[35,31.4],'Kroatië':[16,45.2],'Luxemburg':[6.1,49.7]};
 out.centroid=cen;
-const js='/* Vined It – kaarten. Vooraf berekend uit Natural Earth (publiek domein) via world-atlas. Niet met de hand bewerken: zie docs. */\nconst MAPS='+JSON.stringify(out)+';\nif(typeof module!=="undefined")module.exports={MAPS};\n';
+const js='/* Vineder – kaarten. Vooraf berekend uit Natural Earth (publiek domein) via world-atlas. Niet met de hand bewerken: zie docs. */\nconst MAPS='+JSON.stringify(out)+';\nif(typeof module!=="undefined")module.exports={MAPS};\n';
 fs.writeFileSync(process.argv[2],js);
 console.log('bytes',js.length,'world',JSON.stringify(out.world.d).length,'europe',JSON.stringify(out.europe.d).length,'lands',JSON.stringify(out.lands).length);

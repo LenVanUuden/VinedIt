@@ -1,5 +1,5 @@
 /* =====================================================================
-   Vined It – tekenmotor voor de reisposters
+   Vineder – tekenmotor voor de reisposters
    Elke regio heeft een palet (c) en kenmerken (art):
      mount    – 'alps' | 'andes' | 'volcano' | 'table' | 'mesa' | null
      water    – 'river' | 'sea' | 'lake' | null

@@ -1,11 +1,11 @@
-// Service worker van Vined It: alleen voor pushberichten (geen caching, dus updates komen altijd direct binnen)
+// Service worker van Vineder: alleen voor pushberichten (geen caching, dus updates komen altijd direct binnen)
 self.addEventListener('install', () => self.skipWaiting());
 self.addEventListener('activate', e => e.waitUntil(self.clients.claim()));
 
 self.addEventListener('push', e => {
   let d = {};
   try { d = e.data ? e.data.json() : {}; } catch (_) { d = { body: e.data ? e.data.text() : '' }; }
-  e.waitUntil(self.registration.showNotification(d.title || 'Vined It', {
+  e.waitUntil(self.registration.showNotification(d.title || 'Vineder', {
     body: d.body || 'Vergeet niet je wijn te scannen.',
     icon: 'icon-192.png',
     badge: 'icon-192.png',

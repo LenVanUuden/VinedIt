@@ -1,5 +1,5 @@
 -- =====================================================================
--- Vined It database – migratie 013: wijnvrienden en stickers
+-- Vineder database – migratie 013: wijnvrienden en stickers
 -- Draai NA 012. Plak in Supabase → SQL Editor → Run. Veilig om opnieuw te draaien.
 --
 -- Wijnvrienden

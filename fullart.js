@@ -1,5 +1,5 @@
 /* =====================================================================
-   Vined It – Full Art vanaf Rare
+   Vineder – Full Art vanaf Rare
    Rare       : groot papieren etiket op zilverglitter, kantelt langzaam
    Super Rare : groot etiket op goudglitter, een fles ervoor die zacht wiegt
                 (met schaduw op het etiket)

@@ -1,5 +1,5 @@
 -- =====================================================================
--- Vined It database – migratie 018: etiketfoto's na samenvoegen
+-- Vineder database – migratie 018: etiketfoto's na samenvoegen
 -- Draai NA 017. Plak in Supabase → SQL Editor → Run. Veilig om opnieuw te draaien.
 --
 -- Bij het samenvoegen van dubbele wijnen bleven de etiketfoto's onder het oude

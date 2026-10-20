@@ -1,5 +1,5 @@
 -- =====================================================================
--- Vined It database – migratie 012: strengere klasseformule
+-- Vineder database – migratie 012: strengere klasseformule
 -- Draai NA 011. Plak in Supabase → SQL Editor → Run. Veilig om opnieuw te draaien.
 --
 -- Waarom: de eerste formule stapelde te veel kleine bonussen. Een wijn van €10

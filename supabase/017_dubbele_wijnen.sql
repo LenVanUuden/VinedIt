@@ -1,5 +1,5 @@
 -- =====================================================================
--- Vined It database – migratie 017: dezelfde wijn niet dubbel
+-- Vineder database – migratie 017: dezelfde wijn niet dubbel
 -- Draai NA 016. Plak in Supabase → SQL Editor → Run. Veilig om opnieuw te draaien.
 --
 -- Probleem: de herkenning leest dezelfde fles soms net anders ("Rozier" vs

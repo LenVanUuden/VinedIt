@@ -1,5 +1,5 @@
 /* =====================================================================
-   Vined It – Legendes en Iconen
+   Vineder – Legendes en Iconen
    LEGENDS: de 21 legendarische wijnen (topklasse "Legende"). Prijs telt niet:
    het gaat om faam en geschiedenis. De sleutel is 'maker|naam' in kleine letters.
    LANDINFO: voorblad per land. Per land oude of nieuwe wereld, drie weetjes en

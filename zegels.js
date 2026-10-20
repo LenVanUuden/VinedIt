@@ -1,5 +1,5 @@
 /* =====================================================================
-   Vined It – lakzegels
+   Vineder – lakzegels
    Eén uniek embleem per land, per set (streek) en per uitdaging.
    Emblemen zijn eenvoudige silhouetten in een vak van -28..28, gecentreerd.
    ===================================================================== */

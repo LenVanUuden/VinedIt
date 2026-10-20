@@ -1,5 +1,5 @@
 -- =====================================================================
--- Vined It database – migratie 022: makersstickers alleen voor de maker
+-- Vineder database – migratie 022: makersstickers alleen voor de maker
 -- De drie knipoog-stickers ('o:zegel', 'o:etiket', 'o:postzegel') mag alleen
 -- de maker van de app plakken. Wijnvrienden zien ze wel op zijn album.
 -- Veilig om opnieuw te draaien.

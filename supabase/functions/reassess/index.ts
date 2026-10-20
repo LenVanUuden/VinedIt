@@ -1,5 +1,5 @@
 // =====================================================================
-// Vined It – Edge Function "reassess"
+// Vineder – Edge Function "reassess"
 // Beoordeelt bestaande wijnen (zonder signalen) opnieuw met Claude, op basis
 // van de opgeslagen gegevens (geen foto nodig), en voert de nieuwe klasse door
 // op alle kaarten van die wijn. Alleen voor beheerders (ADMIN_EMAILS).

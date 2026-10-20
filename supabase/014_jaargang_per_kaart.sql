@@ -1,5 +1,5 @@
 -- =====================================================================
--- Vined It database – migratie 014: jaargang per kaart
+-- Vineder database – migratie 014: jaargang per kaart
 -- Draai NA 013. Plak in Supabase → SQL Editor → Run. Veilig om opnieuw te draaien.
 --
 -- Een wijn (producent + cuvée) is gedeeld door iedereen, maar de jaargang

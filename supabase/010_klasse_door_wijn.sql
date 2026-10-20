@@ -1,5 +1,5 @@
 -- =====================================================================
--- Vined It database – migratie 010: de wijn bepaalt de klasse
+-- Vineder database – migratie 010: de wijn bepaalt de klasse
 -- Draai NA 009_herinneringen_top10.sql. Plak in Supabase → SQL Editor → Run.
 -- Veilig om opnieuw te draaien.
 --

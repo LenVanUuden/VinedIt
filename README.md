@@ -1,4 +1,4 @@
-# Vined It
+# Vineder
 
 Een digitaal wijnzegelalbum. Scan het etiket van een wijn die je drinkt, krijg een kaart en steek hem in de sleeve van een dik, in leer gebonden album. Spaar regio's vol en hoop op een zeldzame kaart.
 
@@ -53,7 +53,7 @@ Vanaf Rare (ook bij Legende) staat er een **getekend etiket** op de streekposter
 
 ## Lokaal bekijken
 
-Live: https://lenvanuuden.github.io/VinedIt/ — of open `index.html` in een browser. Er is geen build-stap nodig.
+Live: https://vineder.nl/ — of open `index.html` in een browser. Er is geen build-stap nodig.
 
 ## Database
 

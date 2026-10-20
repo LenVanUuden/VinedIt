@@ -1,4 +1,4 @@
-/* Vined It – gids voor lege vakken ("Waar vind ik dit?")
+/* Vineder – gids voor lege vakken ("Waar vind ik dit?")
    Per set en vaklabel: [wat het is en hoe het smaakt, prijsindicatie in een Nederlandse winkel, optionele etiket-tip].
    Zonder tip maakt de app er zelf een op basis van de matchregel van het vak.
    Prijzen zijn indicaties voor een gangbare fles (75 cl). */

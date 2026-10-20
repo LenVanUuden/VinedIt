@@ -1,5 +1,5 @@
 -- =====================================================================
--- Vined It database – migratie 005: wachttijd bij herproeven
+-- Vineder database – migratie 005: wachttijd bij herproeven
 -- Draai NA 004_herproeven.sql. Plak in Supabase → SQL Editor → New query → Run.
 -- Veilig om opnieuw te draaien.
 --

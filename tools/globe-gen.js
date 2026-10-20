@@ -18,5 +18,5 @@ for(const f of f110){if(!f.id||f.id==='010')continue;
   const P=polys(src.geometry).map(p=>simp(p,fine?0.05:0.1,fine?0.09:0.25)).filter(p=>p.length);
   if(P.length)C.push({id:f.id,p:P});
 }
-const js='/* Vined It – wereldbol. Natural Earth (publiek domein) via world-atlas, vereenvoudigd. Niet met de hand bewerken: tools/globe-gen.js */\nconst GLOBE='+JSON.stringify(C)+';\n';
+const js='/* Vineder – wereldbol. Natural Earth (publiek domein) via world-atlas, vereenvoudigd. Niet met de hand bewerken: tools/globe-gen.js */\nconst GLOBE='+JSON.stringify(C)+';\n';
 fs.writeFileSync(process.argv[3],js);console.log('bytes',js.length,'countries',C.length);

@@ -1,5 +1,5 @@
 /* =====================================================================
-   Vined It – leren Legende-kaarten (21 stuks)
+   Vineder – leren Legende-kaarten (21 stuks)
    Elke Legende is een eigen kaart: getooid leer met roodgouden lijst, het etiket
    nagemaakt op een lap licht leer (ingebrand, bladgoud) en opgestikt.
    Alles is één SVG (schaalt naar elke kaartgrootte). legSVG(c) geeft de kaart,

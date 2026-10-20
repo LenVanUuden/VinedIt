@@ -51,7 +51,7 @@ async function pushEnable(){
   if(!pushSupported()){toast('Deze browser ondersteunt geen meldingen.');return false}
   let p=pushPerm();
   if(p==='default'){try{p=await Notification.requestPermission()}catch(e){p='denied'}}
-  if(p!=='granted'){toast(p==='denied'?'Meldingen staan uit voor Vined It. Zet ze aan in de instellingen van je telefoon of browser.':'Geen toestemming gekregen.',5200);return false}
+  if(p!=='granted'){toast(p==='denied'?'Meldingen staan uit voor Vineder. Zet ze aan in de instellingen van je telefoon of browser.':'Geen toestemming gekregen.',5200);return false}
   const ok=await pushSubscribe();
   if(!ok)toast('Aanzetten lukte niet. Probeer het later nog eens.');
   return ok;
@@ -65,7 +65,7 @@ function openPushAsk(){
   pushAsked('vi.pushask');
   const o=overlay(`<p class="pushbell" aria-hidden="true">🔔</p><p class="status">Weekendseintje</p>
     <p class="hint" style="max-width:30ch">Elke vrijdag om 17:30 krijg je een seintje om je weekendwijn te scannen. Al gescand die dag? Dan laten we je met rust.</p>
-    <div class="pushex"><i>🍷</i><div><b>Vined It</b><br>Het is weekend! Vergeet niet je wijn te scannen.</div></div>
+    <div class="pushex"><i>🍷</i><div><b>Vineder</b><br>Het is weekend! Vergeet niet je wijn te scannen.</div></div>
     <div class="actions"><button class="btn primary" id="pon">Zet aan</button></div>
     <p class="hint" style="font-size:11.5px">Het tijdstip kun je aanpassen in Instellingen.</p>`);
   o.querySelector('#pon').onclick=async e=>{const b=e.currentTarget;b.disabled=true;b.textContent='Even geduld…';
@@ -75,9 +75,9 @@ function openPushAsk(){
 function openPushHome(fromSettings){
   if(!fromSettings)pushAsked('vi.pushios');
   const share=/CriOS|FxiOS|EdgiOS/.test(navigator.userAgent)?'<span class="k">⋯</span> of <span class="k">⇪</span>':'<span class="k">⇪</span>';
-  const o=overlay(`<p class="pushbell" aria-hidden="true">📲</p><p class="status">Zet Vined It op je beginscherm</p>
+  const o=overlay(`<p class="pushbell" aria-hidden="true">📲</p><p class="status">Zet Vineder op je beginscherm</p>
     <p class="hint" style="max-width:30ch">Dan opent hij als een echte app en kunnen we je op vrijdag een seintje sturen om je weekendwijn te scannen.</p>
-    <ol class="pushsteps"><li><span>Tik op ${share} in de balk van je browser</span></li><li><span>Kies <b>Zet op beginscherm</b></span></li><li><span>Open Vined It vanaf je beginscherm en tik op <b>Zet aan</b></span></li></ol>
+    <ol class="pushsteps"><li><span>Tik op ${share} in de balk van je browser</span></li><li><span>Kies <b>Zet op beginscherm</b></span></li><li><span>Open Vineder vanaf je beginscherm en tik op <b>Zet aan</b></span></li></ol>
     <div class="actions"><button class="btn primary" id="pok">Begrepen</button></div>`,fromSettings?{nest:true}:{});
   o.querySelector('#pok').onclick=()=>fromSettings?popOverlay():closeOverlay();
 }
@@ -121,7 +121,7 @@ async function pushSettingsSave(o){
   const on=o.querySelector('#pon2'),tm=o.querySelector('#ptime');if(!on)return;
   const want=on.checked,changed=(want?'1':'')!==on.dataset.was||tm.value!==tm.dataset.was;
   if(!changed)return;
-  if(want&&pushNeedsHome()){toast('Zet Vined It eerst op je beginscherm en open hem daarvandaan; daarna kun je het seintje aanzetten.',6000);return}
+  if(want&&pushNeedsHome()){toast('Zet Vineder eerst op je beginscherm en open hem daarvandaan; daarna kun je het seintje aanzetten.',6000);return}
   if(want&&!(pushPerm()==='granted'&&await pushSubscribe())){if(!(await pushEnable()))return}
   const {error}=await sb.rpc('push_settings',{p_enabled:want,p_time:tm.value});
   if(error)console.error(error);

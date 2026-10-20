@@ -1,5 +1,5 @@
 -- =====================================================================
--- Vined It database – migratie 009: herinneringen, top 10 en stapels
+-- Vineder database – migratie 009: herinneringen, top 10 en stapels
 -- Draai NA 008_feedback.sql. Plak in Supabase → SQL Editor → New query → Run.
 -- Veilig om opnieuw te draaien.
 -- =====================================================================

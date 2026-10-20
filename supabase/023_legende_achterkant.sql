@@ -1,5 +1,5 @@
 -- =====================================================================
--- Vined It database – migratie 023: Legende pas na foto van de achterkant
+-- Vineder database – migratie 023: Legende pas na foto van de achterkant
 -- Bij een Legende die je nog niet hebt, maakt de herkenning nog geen kaart.
 -- Eerst een foto van de achterkant van dezelfde fles (zelfde maker, wijn en
 -- jaargang); pas dan volgt de kaart. Deze tabel bewaart de wachtende controle

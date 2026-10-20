@@ -1,5 +1,5 @@
 -- =====================================================================
--- Vined It database – migratie 024: beheerderscentrum
+-- Vineder database – migratie 024: beheerderscentrum
 -- Cijfers (opgeteld, nooit per persoon), AI-kosten, feedback-inbox en wijnbeheer.
 -- Alles alleen voor de beheerder. Veilig om opnieuw te draaien.
 -- =====================================================================

@@ -1,5 +1,5 @@
 /* =====================================================================
-   Vined It – getekende etiketten
+   Vineder – getekende etiketten
    Een etiket in de stijl van het album, op basis van de kenmerken van het
    echte etiket (kleuren, letterstijl, opbouw, embleem). Bewust algemeen:
    geen exacte logo's of wapens.

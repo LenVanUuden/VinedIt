@@ -1,5 +1,5 @@
 -- =====================================================================
--- Vined It database – migratie 020: de 21e Legende
+-- Vineder database – migratie 020: de 21e Legende
 -- Musigny van Comte Georges de Vogüé komt erbij (naast de Musigny van Leroy).
 -- Veilig om opnieuw te draaien.
 -- =====================================================================

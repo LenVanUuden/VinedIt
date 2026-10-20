@@ -1,5 +1,5 @@
 -- =====================================================================
--- Vined It database – migratie 008: feedback van testers
+-- Vineder database – migratie 008: feedback van testers
 -- Draai NA 007_scannen.sql. Plak in Supabase → SQL Editor → New query → Run.
 -- Veilig om opnieuw te draaien.
 -- =====================================================================

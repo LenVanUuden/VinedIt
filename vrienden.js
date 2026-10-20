@@ -1,5 +1,5 @@
 /* =====================================================================
-   Vined It – Mijn wijnvrienden
+   Vineder – Mijn wijnvrienden
    Uitnodigen met een persoonlijke link (WhatsApp), geen e-mail nodig.
    Het album van een wijnvriend is alleen-lezen en zonder herinneringen.
    ===================================================================== */
@@ -14,10 +14,10 @@ async function shareInvite(o,fresh){
   const {data:code,error}=await sb.rpc('my_invite',{p_new:!!fresh});
   if(btn)btn.disabled=false;
   if(error||!code){toast('De uitnodiging kon niet worden gemaakt. Is de database bijgewerkt (stap 013)?');console.error(error);return}
-  const url=inviteUrl(code),text=`Word mijn wijnvriend in Vined It! Dan kunnen we elkaars wijnalbum bekijken. 🍷`;
+  const url=inviteUrl(code),text=`Word mijn wijnvriend in Vineder! Dan kunnen we elkaars wijnalbum bekijken. 🍷`;
   const box=o.querySelector('#flink');if(box){box.hidden=false;box.querySelector('code').textContent=url}
   if(fresh){toast('Nieuwe link gemaakt. De oude werkt niet meer.');return}
-  try{if(navigator.share){await navigator.share({title:'Vined It',text,url});return}}catch(e){if(e&&e.name==='AbortError')return}
+  try{if(navigator.share){await navigator.share({title:'Vineder',text,url});return}}catch(e){if(e&&e.name==='AbortError')return}
   try{await navigator.clipboard.writeText(text+' '+url);toast('Link gekopieerd. Plak hem in WhatsApp.')}catch(e){toast('Kopieer de link hieronder en stuur hem door.')}
 }
 

@@ -1,5 +1,5 @@
 -- =====================================================================
--- Vined It database – migratie 015: getekend etiket per wijn
+-- Vineder database – migratie 015: getekend etiket per wijn
 -- Draai NA 014. Plak in Supabase → SQL Editor → Run. Veilig om opnieuw te draaien.
 --
 -- Claude beschrijft bij de eerste scan het ontwerp van het etiket (kleuren,

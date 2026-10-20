@@ -1,5 +1,5 @@
 -- =====================================================================
--- Vined It database – migratie 016: de twintig Legendes
+-- Vineder database – migratie 016: de twintig Legendes
 -- Draai NA 015. Plak in Supabase → SQL Editor → Run. Veilig om opnieuw te draaien.
 --
 -- De topklasse heet nu "Legende" (intern blijft het 'icon'). Alleen deze twintig

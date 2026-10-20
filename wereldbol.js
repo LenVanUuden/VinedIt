@@ -1,5 +1,5 @@
 /* =====================================================================
-   Vined It – draaibare wereldbol ("Mijn wijnwereld")
+   Vineder – draaibare wereldbol ("Mijn wijnwereld")
    Horizontaal draaien, licht kantelen (±35°), knijpen om in te zoomen,
    tik op een land. d3-geo en de landdata (globe.js) worden pas geladen
    als de wereldbol in beeld komt.

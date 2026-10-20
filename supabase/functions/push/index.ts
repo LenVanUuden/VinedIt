@@ -16,7 +16,7 @@ const CORS = {
 };
 const PUBLISHABLE_FALLBACK = "sb_publishable_vpOCr1D2DfYbpBEcAhdvSg_f1dcs5OA";
 const ADMINS = (Deno.env.get("ADMIN_EMAILS") ?? "l.v.uuden3@gmail.com").toLowerCase().split(",").map((x) => x.trim());
-const APP_URL = "https://lenvanuuden.github.io/VinedIt/";
+const APP_URL = "https://vineder.nl/";
 const json = (b: unknown, s = 200) =>
   new Response(JSON.stringify(b), { status: s, headers: { ...CORS, "Content-Type": "application/json" } });
 
@@ -55,7 +55,7 @@ type Sub = { endpoint: string; user_id: string; p256dh: string; auth: string };
 async function sendAll(admin: ReturnType<typeof createClient>, subs: Sub[], body: string, today: string | null) {
   const k = await keys(admin);
   webpush.setVapidDetails("mailto:l.v.uuden3@gmail.com", k.public_key, k.private_key);
-  const payload = JSON.stringify({ title: "Vined It", body, url: APP_URL });
+  const payload = JSON.stringify({ title: "Vineder", body, url: APP_URL });
   let sent = 0, gone = 0, failed = 0;
   await Promise.all(subs.map(async (s) => {
     try {

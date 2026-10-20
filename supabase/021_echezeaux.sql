@@ -1,5 +1,5 @@
 -- =====================================================================
--- Vined It database – migratie 021: Échezeaux (DRC) vervangt Musigny (Leroy)
+-- Vineder database – migratie 021: Échezeaux (DRC) vervangt Musigny (Leroy)
 -- Veilig om opnieuw te draaien. Niemand had een Leroy-kaart.
 -- =====================================================================
 update public.wines set is_icon = false, tier = null, tier_reason = null
