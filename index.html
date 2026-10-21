@@ -451,6 +451,9 @@ button{font:inherit;color:inherit}
 .scan-t small:empty{display:none}
 .extras{display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap}
 .reset{background:none;border:0;color:var(--gold-soft);opacity:.55;font-size:12px;text-decoration:underline;cursor:pointer}
+.upd{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 10px);transform:translateX(-50%);display:flex;align-items:center;gap:10px;background:var(--card);color:var(--ink);padding:8px 8px 8px 16px;border-radius:12px;font-size:13.5px;box-shadow:0 8px 24px rgba(0,0,0,.4);border:1px solid rgba(212,175,55,.5);z-index:70;max-width:92vw;animation:toastin .35s cubic-bezier(.2,1.2,.4,1) backwards}
+.upd .go{background:#d4af37;color:#2a1c05;border:0;border-radius:8px;padding:7px 12px;font:inherit;font-weight:600;cursor:pointer}
+.upd .x{background:none;border:0;color:inherit;opacity:.6;font-size:20px;line-height:1;padding:4px 8px;cursor:pointer}
 .toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 90px);transform:translateX(-50%);background:var(--card);color:var(--ink);padding:10px 16px;border-radius:10px;font-size:13.5px;box-shadow:0 8px 24px rgba(0,0,0,.4);z-index:60;max-width:min(88vw,380px);text-align:center}
 
 @media (prefers-reduced-motion:reduce){
@@ -1321,21 +1324,22 @@ body.onlysamen .slot:not(:has(.mini.samen)) .sleeve>*{opacity:.18;filter:graysca
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
-<script>window.VI_V='20261020-203720'</script>
-<script src="data.js?v=20261020-203720"></script>
-<script src="art.js?v=20261020-203720"></script>
-<script src="gids.js?v=20261020-203720"></script>
-<script src="maps.js?v=20261020-203720"></script>
-<script src="zegels.js?v=20261020-203720"></script>
-<script src="landen.js?v=20261020-203720"></script>
-<script src="etiket.js?v=20261020-203720"></script>
-<script src="legendes.js?v=20261020-203720"></script>
-<script src="fullart.js?v=20261020-203720"></script>
-<script src="stickers.js?v=20261020-203720"></script>
-<script src="kistjes.js?v=20261020-203720"></script>
-<script src="vrienden.js?v=20261020-203720"></script>
-<script src="push.js?v=20261020-203720"></script>
-<script src="wereldbol.js?v=20261020-203720"></script>
+<script>window.VI_V='20261021-065803'</script>
+<script src="data.js?v=20261021-065803"></script>
+<script src="art.js?v=20261021-065803"></script>
+<script src="gids.js?v=20261021-065803"></script>
+<script src="maps.js?v=20261021-065803"></script>
+<script src="zegels.js?v=20261021-065803"></script>
+<script src="landen.js?v=20261021-065803"></script>
+<script src="etiket.js?v=20261021-065803"></script>
+<script src="legendes.js?v=20261021-065803"></script>
+<script src="fullart.js?v=20261021-065803"></script>
+<script src="stickers.js?v=20261021-065803"></script>
+<script src="kistjes.js?v=20261021-065803"></script>
+<script src="vrienden.js?v=20261021-065803"></script>
+<script src="update.js?v=20261021-065803"></script>
+<script src="push.js?v=20261021-065803"></script>
+<script src="wereldbol.js?v=20261021-065803"></script>
 <script>
 const SB_URL='https://fneiobwtubeehjqnzeta.supabase.co';
 const SB_KEY='sb_publishable_vpOCr1D2DfYbpBEcAhdvSg_f1dcs5OA'; // publieke sleutel, bedoeld voor de browser
