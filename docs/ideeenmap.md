@@ -12,7 +12,7 @@ Ideeën uit tests en eigen inval. Per idee: waar het vandaan komt, wat het oplev
 | 6 | Druivenjager: open logboek voor zeldzame druiven | Len | Hoog | Klein | Idee |
 | 7 | Eigen sets ("Vakantie Toscane 2026") | Claude | Hoog | Middel | Idee |
 | 8 | Welkomstrondleiding (4 schermen) | Claude | Hoog voor nieuwe gebruikers | Klein | Live |
-| 9 | "Koop deze fles" vanuit een leeg vak | Len | Verdienmodel | Middel (partners nodig) | Later |
+| 9 | "Koop deze fles" vanuit een leeg vak | Len | Verdienmodel | Middel (partners nodig) | Stap 1 gebouwd: onbetaalde zoeklinks naar 8 winkels (nog te testen, `?winkeltest=1`) met 18+-bevestiging en klikteller; affiliate later |
 | 10 | Overzicht "Mijn kaarten" op datum | Claude | Middel | Klein | Idee |
 | 11 | **Interactieve wereldkaart** ("Mijn wijnwereld") | Tester | Middel-hoog: overzicht en trots | Middel | Live |
 | 13 | **Stapels per vak**: extra kaarten op de stapel in hun vak, zeldzaamste bovenop, zelf te kiezen | Len | Hoog: elke kaart een plek in context, minder 'Overige' | Middel | Live |

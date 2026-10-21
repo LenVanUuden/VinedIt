@@ -580,6 +580,8 @@ button{font:inherit;color:inherit}
 .gidcard h4{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#8B6A3A;margin:12px 0 4px;font-weight:600}
 .gidcard p.gt{margin:0;font-size:14px;line-height:1.5}
 .gidcard .gnote{font-size:11px;color:#8B6A3A;margin:14px 0 0}
+.gshops{margin:8px 0 2px}.gshop{text-decoration:none;color:inherit}.gshop small{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#8B6A3A;margin-left:2px}
+.gadult{flex:1 1 100%}.gadult p{margin:0 0 8px}.gadbtns{display:flex;gap:8px;flex-wrap:wrap}
 [hidden]{display:none!important}
 /* Top 10 */
 .favpage{gap:10px}
@@ -1324,22 +1326,23 @@ body.onlysamen .slot:not(:has(.mini.samen)) .sleeve>*{opacity:.18;filter:graysca
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
-<script>window.VI_V='20261021-065803'</script>
-<script src="data.js?v=20261021-065803"></script>
-<script src="art.js?v=20261021-065803"></script>
-<script src="gids.js?v=20261021-065803"></script>
-<script src="maps.js?v=20261021-065803"></script>
-<script src="zegels.js?v=20261021-065803"></script>
-<script src="landen.js?v=20261021-065803"></script>
-<script src="etiket.js?v=20261021-065803"></script>
-<script src="legendes.js?v=20261021-065803"></script>
-<script src="fullart.js?v=20261021-065803"></script>
-<script src="stickers.js?v=20261021-065803"></script>
-<script src="kistjes.js?v=20261021-065803"></script>
-<script src="vrienden.js?v=20261021-065803"></script>
-<script src="update.js?v=20261021-065803"></script>
-<script src="push.js?v=20261021-065803"></script>
-<script src="wereldbol.js?v=20261021-065803"></script>
+<script>window.VI_V='20261021-112347'</script>
+<script src="data.js?v=20261021-112347"></script>
+<script src="art.js?v=20261021-112347"></script>
+<script src="gids.js?v=20261021-112347"></script>
+<script src="maps.js?v=20261021-112347"></script>
+<script src="zegels.js?v=20261021-112347"></script>
+<script src="landen.js?v=20261021-112347"></script>
+<script src="etiket.js?v=20261021-112347"></script>
+<script src="legendes.js?v=20261021-112347"></script>
+<script src="fullart.js?v=20261021-112347"></script>
+<script src="stickers.js?v=20261021-112347"></script>
+<script src="kistjes.js?v=20261021-112347"></script>
+<script src="vrienden.js?v=20261021-112347"></script>
+<script src="winkels.js?v=20261021-112347"></script>
+<script src="update.js?v=20261021-112347"></script>
+<script src="push.js?v=20261021-112347"></script>
+<script src="wereldbol.js?v=20261021-112347"></script>
 <script>
 const SB_URL='https://fneiobwtubeehjqnzeta.supabase.co';
 const SB_KEY='sb_publishable_vpOCr1D2DfYbpBEcAhdvSg_f1dcs5OA'; // publieke sleutel, bedoeld voor de browser
@@ -1395,7 +1398,7 @@ applySettings();
 async function loadSettings(){
   try{
     const {data,error}=await sb.from('collectors').select('*').maybeSingle();
-    if(!error&&data){LIMIT=data.daily_limit||3;settings={...settings,name:data.display_name||'',cover:data.cover_color||'bordeaux',pages:data.page_color||'zwart',memberNo:data.member_no||null};applySettings()}
+    if(!error&&data){LIMIT=data.daily_limit||3;settings={...settings,name:data.display_name||'',cover:data.cover_color||'bordeaux',pages:data.page_color||'zwart',memberNo:data.member_no||null};adultOK=!!data.adult_confirmed_at;applySettings()}
     else if(!error){
       // Nieuw account: naam die bij het aanmaken is ingevuld, als omslagnaam vastzetten
       const dn=session?.user?.user_metadata?.display_name;
@@ -1432,6 +1435,7 @@ function openGids(gid){
       <div class="gchips"><span class="gchip d${sl.d}">${D[0]} ${D[1]}</span>${g[1]?`<span class="gchip">€ ${esc(g[1].replace(/^€\s?/,''))}</span>`:''}</div>
       ${g[0]?`<h4>Wat is het?</h4><p class="gt">${esc(g[0])}</p>`:''}
       <h4>Waar vind je hem?</h4><p class="gt">${esc(D[2])}</p>
+      ${gShopsHtml(sl)}
       ${tip?`<h4>Zo herken je hem</h4><p class="gt">${esc(tip)}</p>`:''}
       <p class="gnote">Prijzen zijn een indicatie voor een gangbare fles.</p>
     </div>
@@ -1439,6 +1443,30 @@ function openGids(gid){
   o.classList.add('leather');
   const c=o.querySelector('#close');c.onclick=()=>closeOverlay();c.focus();
   const gs=o.querySelector('#gscan');if(gs)gs.onclick=()=>{closeOverlay();$('#scan').click()};
+  const gsh=o.querySelector('#gshops');
+  if(gsh)gsh.addEventListener('click',ev=>{
+    const a=ev.target.closest('a[data-shop]');if(!a)return;
+    const shop=a.dataset.shop,url=a.href;
+    const logIt=()=>{if(session){try{Promise.resolve(sb.rpc('log_shop_click',{p_shop:shop,p_set:sid,p_slot:sl.l})).catch(()=>{})}catch(e){}}};
+    if(isAdult()){logIt();return} // gewone link: opent zelf in een nieuw tabblad
+    ev.preventDefault();
+    const orig=gsh.innerHTML;
+    gsh.innerHTML='<div class="gadult"><p class="gt"><b>Ben je 18 jaar of ouder?</b> Deze winkel verkoopt alcohol.</p><div class="gadbtns"><button class="btn primary" type="button" id="gad-ja">Ja, ik ben 18+</button><button class="btn" type="button" id="gad-nee">Annuleren</button></div></div>';
+    gsh.querySelector('#gad-ja').onclick=()=>{setAdult();gsh.innerHTML=orig;logIt();window.open(url,'_blank','noopener,noreferrer')};
+    gsh.querySelector('#gad-nee').onclick=()=>{gsh.innerHTML=orig};
+  });
+}
+/* Zoek in de winkel (op een leeg vak): gewone zoeklinks, zie winkels.js. 18+ eenmalig bevestigen. */
+let adultOK=false;
+const adultKey=()=>'vi.adult.'+(session&&session.user?session.user.id:'');
+function isAdult(){if(adultOK)return true;try{return !!localStorage.getItem(adultKey())}catch(e){return false}}
+function setAdult(){adultOK=true;try{localStorage.setItem(adultKey(),'1')}catch(e){}if(session){try{Promise.resolve(sb.rpc('confirm_adult')).catch(()=>{})}catch(e){}}}
+function gShopsHtml(sl){
+  const term=zoekterm(sl),shops=zichtbareWinkels();
+  if(!term||!shops.length)return '';
+  return `<h4>Zoek in de winkel</h4><p class="gt">Zoek “${esc(term)}” bij een Nederlandse wijnwinkel:</p>
+      <div class="gchips gshops" id="gshops">${shops.map(s=>`<a class="gchip gshop" href="${esc(winkelUrl(s,term))}" target="_blank" rel="noopener noreferrer" data-shop="${esc(s.id)}">${esc(s.naam)}${s.ok?'':' <small>test</small>'}</a>`).join('')}</div>
+      <p class="gnote">Vineder verdient hier niets aan. 18+ · de winkel controleert je leeftijd bij bestellen en bezorgen · aanbod en prijzen kunnen afwijken.</p>`;
 }
 function openFeedback(){
   if(!session){toast('Log eerst in om feedback te sturen.');return}
@@ -3321,7 +3349,7 @@ function hintSwipe(){
 }
 async function logout(){
   if(viewing)exitFriend();
-  closeOverlay();await sb.auth.signOut();settings={name:'',cover:'bordeaux',pages:'zwart'};applySettings();LIMIT=3;serverToday=null;session=null;cards=[];ownedKeys=new Set();authStep='login';busy=false;refresh();cur=0;go(0,true);
+  closeOverlay();await sb.auth.signOut();settings={name:'',cover:'bordeaux',pages:'zwart'};adultOK=false;applySettings();LIMIT=3;serverToday=null;session=null;cards=[];ownedKeys=new Set();authStep='login';busy=false;refresh();cur=0;go(0,true);
 }
 
 /* ---------- start ---------- */
