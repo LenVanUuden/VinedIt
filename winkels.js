@@ -6,14 +6,10 @@
    Test een winkel: open vineder.nl/?winkeltest=1, tik een leeg vak, tik de winkel en kijk of er
    zoekresultaten staan. Werkt het? Zet ok op true. Werkt het niet? Pas url aan of haal de winkel weg. */
 const SHOPS=[
-  {id:'wijnvoordeel',naam:'Wijnvoordeel',url:'https://www.wijnvoordeel.nl/catalogsearch/result/?q={q}',ok:false},
-  {id:'vino',naam:'Vino',url:'https://www.vino.com/search?q={q}',ok:false},
-  {id:'bovino',naam:'Bovino',url:'https://www.bovino.nl/zoeken?q={q}',ok:false},
-  {id:'degoudenton',naam:'De Gouden Ton',url:'https://www.degoudenton.nl/zoeken?q={q}',ok:false},
-  {id:'gall',naam:'Gall & Gall',url:'https://www.gall.nl/zoeken/?q={q}',ok:false},
-  {id:'wijnbeurs',naam:'Wijnbeurs',url:'https://www.wijnbeurs.nl/zoeken?q={q}',ok:false},
-  {id:'colaris',naam:'Colaris',url:'https://www.colaris.nl/zoeken?q={q}',ok:false},
-  {id:'vindict',naam:'Vindict',url:'https://www.vindict.nl/zoeken?q={q}',ok:false}
+  {id:'wijnvoordeel',naam:'Wijnvoordeel',url:'https://www.wijnvoordeel.nl/catalogsearch/result/?q={q}',ok:true},
+  {id:'gall',naam:'Gall & Gall',url:'https://www.gall.nl/zoeken/?q={q}',ok:true}
+  /* Getest en afgevallen (404 of zoekpagina toont niet alleen de zoekterm): vino.com, bovino.nl, degoudenton.nl,
+     wijnbeurs.nl, colaris.nl, vindict.nl. Zoek bij hen eerst het echte zoekadres op en test met ?winkeltest=1. */
 ];
 
 /* Zoekterm voor een vak: het label tot aan " / ", zonder haakjes. Leeg = geen knop.
