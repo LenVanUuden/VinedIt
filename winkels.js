@@ -7,9 +7,15 @@
    zoekresultaten staan. Werkt het? Zet ok op true. Werkt het niet? Pas url aan of haal de winkel weg. */
 const SHOPS=[
   {id:'wijnvoordeel',naam:'Wijnvoordeel',url:'https://www.wijnvoordeel.nl/catalogsearch/result/?q={q}',ok:true},
-  {id:'gall',naam:'Gall & Gall',url:'https://www.gall.nl/zoeken/?q={q}',ok:true}
-  /* Getest en afgevallen (404 of zoekpagina toont niet alleen de zoekterm): vino.com, bovino.nl, degoudenton.nl,
-     wijnbeurs.nl, colaris.nl, vindict.nl. Zoek bij hen eerst het echte zoekadres op en test met ?winkeltest=1. */
+  {id:'gall',naam:'Gall & Gall',url:'https://www.gall.nl/zoeken/?q={q}',ok:true},
+  {id:'vino',naam:'Vino.com',url:'https://www.vino.com/nl/s/?testoRicerca={q}',ok:true},
+  {id:'degoudenton',naam:'De Gouden Ton',url:'https://www.degoudenton.nl/catalogsearch/result/?q={q}',ok:true},
+  /* Zoekadres met # (zoekt in de pagina zelf): getest met één woord, nog niet met meer woorden of accenten
+     ("Champagne Brut", "Côtes de Bourg"). Eerst testen met ?winkeltest=1. */
+  {id:'bovino',naam:'Bovino',url:'https://www.bovino.nl/zoekresultaten#twn|?tn_q={q}',ok:false},
+  {id:'wijnbeurs',naam:'Wijnbeurs',url:'https://www.wijnbeurs.nl/#sqr:(q[{q}])',ok:false},
+  {id:'colaris',naam:'Colaris',url:'https://www.colaris.nl/#sqr:(q[{q}])',ok:false}
+  /* Vindict: nog geen werkend zoekadres. */
 ];
 
 /* Zoekterm voor een vak: het label tot aan " / ", zonder haakjes. Leeg = geen knop.
@@ -24,7 +30,7 @@ function zoekterm(sl,gebieden){
   if(g&&!m.app&&!m.grape&&!t.toLowerCase().includes(g.toLowerCase()))t=g+' '+t;
   return t;
 }
-function winkelUrl(shop,term){return shop.url.replace('{q}',encodeURIComponent(term))}
+function winkelUrl(shop,term){return shop.url.replace('{q}',()=>encodeURIComponent(term))}
 function winkelTest(){try{return /[?&]winkeltest(=1)?(&|$)/.test(location.search)}catch(e){return false}}
 function zichtbareWinkels(){const t=winkelTest();return SHOPS.filter(s=>s.ok||t)}
 if(typeof module!=='undefined')module.exports={SHOPS,zoekterm,winkelUrl,zichtbareWinkels};
