@@ -1326,23 +1326,23 @@ body.onlysamen .slot:not(:has(.mini.samen)) .sleeve>*{opacity:.18;filter:graysca
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
-<script>window.VI_V='20261021-114929'</script>
-<script src="data.js?v=20261021-114929"></script>
-<script src="art.js?v=20261021-114929"></script>
-<script src="gids.js?v=20261021-114929"></script>
-<script src="maps.js?v=20261021-114929"></script>
-<script src="zegels.js?v=20261021-114929"></script>
-<script src="landen.js?v=20261021-114929"></script>
-<script src="etiket.js?v=20261021-114929"></script>
-<script src="legendes.js?v=20261021-114929"></script>
-<script src="fullart.js?v=20261021-114929"></script>
-<script src="stickers.js?v=20261021-114929"></script>
-<script src="kistjes.js?v=20261021-114929"></script>
-<script src="vrienden.js?v=20261021-114929"></script>
-<script src="winkels.js?v=20261021-114929"></script>
-<script src="update.js?v=20261021-114929"></script>
-<script src="push.js?v=20261021-114929"></script>
-<script src="wereldbol.js?v=20261021-114929"></script>
+<script>window.VI_V='20261023-194837'</script>
+<script src="data.js?v=20261023-194837"></script>
+<script src="art.js?v=20261023-194837"></script>
+<script src="gids.js?v=20261023-194837"></script>
+<script src="maps.js?v=20261023-194837"></script>
+<script src="zegels.js?v=20261023-194837"></script>
+<script src="landen.js?v=20261023-194837"></script>
+<script src="etiket.js?v=20261023-194837"></script>
+<script src="legendes.js?v=20261023-194837"></script>
+<script src="fullart.js?v=20261023-194837"></script>
+<script src="stickers.js?v=20261023-194837"></script>
+<script src="kistjes.js?v=20261023-194837"></script>
+<script src="vrienden.js?v=20261023-194837"></script>
+<script src="winkels.js?v=20261023-194837"></script>
+<script src="update.js?v=20261023-194837"></script>
+<script src="push.js?v=20261023-194837"></script>
+<script src="wereldbol.js?v=20261023-194837"></script>
 <script>
 const SB_URL='https://fneiobwtubeehjqnzeta.supabase.co';
 const SB_KEY='sb_publishable_vpOCr1D2DfYbpBEcAhdvSg_f1dcs5OA'; // publieke sleutel, bedoeld voor de browser
@@ -3008,6 +3008,7 @@ async function openAdminStats(){
   const [{data:d,error},{data:sc}]=await Promise.all([sb.rpc('admin_stats'),sb.rpc('admin_shop_clicks').then(r=>r,()=>({data:null}))]);if(!o.isConnected)return;
   if(error||!d){o.querySelector('.hint').textContent='Laden lukte niet.';return}
   const tile=(n,l,sub)=>`<div class="atile"><b>${n}</b><span>${l}</span>${sub?`<small>${sub}</small>`:''}</div>`;
+  const today=d.scans14[d.scans14.length-1]; // laatste dag in de reeks is altijd vandaag
   const mx=Math.max(1,...d.scans14.map(x=>x.scans));
   const bars=d.scans14.map(x=>{const dt=new Date(x.d);return `<div class="abar" title="${x.scans} scans, ${x.kaarten} kaarten"><i style="height:${Math.round(x.scans/mx*92)}px"></i><em style="height:${Math.round(x.kaarten/mx*92)}px"></em><span>${dt.getDate()}</span></div>`}).join('');
   const K={herkenning:'Herkenning',achterkant:'Achterkant-controle',tekenen:'Etiketten tekenen',klasse:'Klassen beoordelen'};
@@ -3022,7 +3023,7 @@ async function openAdminStats(){
       <div class="acost">${sc.slots.map(x=>`<div><span>${esc(x.slot)} · ${esc(setN(x.set))}</span><em></em><b>${x.n}×</b></div>`).join('')}</div>`
       :`<p class="hint small">Nog geen klikken. Ze verschijnen hier zodra iemand een winkellink aantikt.</p>`}`:'';
   o.innerHTML=o.querySelector('.ovbar').outerHTML+`<p class="status">Cijfers</p>
-    <div class="atiles">${tile(d.users,'verzamelaars',d.new7?`+${d.new7} deze week`:'')}${tile(d.active7,'actief, 7 dagen',`${d.active30} in 30 dagen`)}${tile(d.cards,'kaarten',`+${d.cards7} deze week`)}${tile(d.wines,'verschillende wijnen',`+${d.wines7} deze week`)}${tile(d.friends,'vriendschappen')}${tile(d.feedback_open,'open feedback')}</div>
+    <div class="atiles">${tile(today?today.scans:0,'scans vandaag',today&&today.kaarten?`${today.kaarten} nieuwe kaarten`:'')}${tile(d.users,'verzamelaars',d.new7?`+${d.new7} deze week`:'')}${tile(d.active7,'actief, 7 dagen',`${d.active30} in 30 dagen`)}${tile(d.cards,'kaarten',`+${d.cards7} deze week`)}${tile(d.wines,'verschillende wijnen',`+${d.wines7} deze week`)}${tile(d.friends,'vriendschappen')}${tile(d.feedback_open,'open feedback')}</div>
     <p class="mgroup">Scans per dag (14 dagen)</p><div class="abars">${bars}</div><p class="hint small"><i class="alg s"></i> herkenningen <i class="alg k"></i> nieuwe kaarten</p>
     <p class="mgroup">Kaarten per klasse</p><div class="atiers">${tiers}</div>
     <p class="mgroup">AI-kosten deze maand</p>
